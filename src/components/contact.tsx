@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Send, Paperclip, X } from "lucide-react";
 import { GithubIcon, LinkedinIcon, TwitterIcon } from "./social-icons";
 
 const containerVariants = {
@@ -21,6 +21,7 @@ const itemVariants = {
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [files, setFiles] = useState<File[]>([]);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -32,8 +33,11 @@ export default function Contact() {
     setStatus("sending");
 
     const subject = encodeURIComponent(form.subject || "Portfolio Contact");
+    const attachNote = files.length > 0
+      ? `\n\n[${files.length} file(s) attached: ${files.map(f => f.name).join(", ")}]\n(Note: mailto links cannot attach files directly — please reply to this email to share attachments)`
+      : "";
     const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
+      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}${attachNote}`
     );
     window.open(
       `mailto:tusharpatwadi2003@gmail.com?subject=${subject}&body=${body}`,
@@ -43,6 +47,7 @@ export default function Contact() {
     await new Promise((r) => setTimeout(r, 800));
     setStatus("sent");
     setForm({ name: "", email: "", subject: "", message: "" });
+    setFiles([]);
     setTimeout(() => setStatus("idle"), 3000);
   };
 
@@ -340,6 +345,80 @@ export default function Contact() {
                     placeholder="Tell me about your project..."
                     className="form-input resize-none"
                   />
+                </div>
+
+                {/* Attach documents */}
+                <div>
+                  <label
+                    htmlFor="attachments"
+                    className="block text-xs font-semibold mb-2"
+                    style={{ color: "#71717a" }}
+                  >
+                    Attachments <span className="font-normal">(optional)</span>
+                  </label>
+                  <label
+                    htmlFor="attachments"
+                    className="flex items-center justify-center gap-2 w-full py-3 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer"
+                    style={{
+                      border: "1px dashed rgba(59,130,246,0.3)",
+                      background: "rgba(59,130,246,0.03)",
+                      color: "#60a5fa",
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.borderColor = "rgba(59,130,246,0.5)";
+                      (e.currentTarget as HTMLElement).style.background = "rgba(59,130,246,0.06)";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.borderColor = "rgba(59,130,246,0.3)";
+                      (e.currentTarget as HTMLElement).style.background = "rgba(59,130,246,0.03)";
+                    }}
+                  >
+                    <Paperclip size={14} />
+                    Attach files
+                  </label>
+                  <input
+                    id="attachments"
+                    type="file"
+                    multiple
+                    className="hidden"
+                    onChange={(e) => {
+                      if (e.target.files) {
+                        setFiles((prev) => [...prev, ...Array.from(e.target.files!)]);
+                      }
+                    }}
+                  />
+                  {files.length > 0 && (
+                    <div className="mt-2 space-y-1.5">
+                      {files.map((file, i) => (
+                        <div
+                          key={`${file.name}-${i}`}
+                          className="flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-xs"
+                          style={{
+                            background: "rgba(255,255,255,0.03)",
+                            border: "1px solid rgba(255,255,255,0.06)",
+                          }}
+                        >
+                          <div className="flex items-center gap-2 min-w-0">
+                            <Paperclip size={12} style={{ color: "#60a5fa", flexShrink: 0 }} />
+                            <span className="truncate" style={{ color: "#a1a1aa" }}>{file.name}</span>
+                            <span style={{ color: "#52525b" }}>
+                              ({(file.size / 1024).toFixed(0)} KB)
+                            </span>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => setFiles((prev) => prev.filter((_, j) => j !== i))}
+                            className="flex-shrink-0 p-0.5 rounded transition-colors"
+                            style={{ color: "#52525b" }}
+                            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#ef4444")}
+                            onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#52525b")}
+                          >
+                            <X size={13} />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 <button
