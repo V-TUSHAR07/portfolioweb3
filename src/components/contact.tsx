@@ -30,7 +30,17 @@ export default function Contact() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setStatus("sending");
-    await new Promise((r) => setTimeout(r, 1200));
+
+    const subject = encodeURIComponent(form.subject || "Portfolio Contact");
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
+    );
+    window.open(
+      `mailto:tusharpatwadi2003@gmail.com?subject=${subject}&body=${body}`,
+      "_self"
+    );
+
+    await new Promise((r) => setTimeout(r, 800));
     setStatus("sent");
     setForm({ name: "", email: "", subject: "", message: "" });
     setTimeout(() => setStatus("idle"), 3000);

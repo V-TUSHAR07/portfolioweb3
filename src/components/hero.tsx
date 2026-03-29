@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Download } from "lucide-react";
 import { GithubIcon, LinkedinIcon, TwitterIcon } from "./social-icons";
 import dynamic from "next/dynamic";
 
@@ -202,6 +202,14 @@ export default function Hero() {
           >
             Get In Touch
           </button>
+          <a
+            href="/CV-TUSHAR.pdf"
+            download="V-Tushar-CV.pdf"
+            className="btn-outline px-7 py-3 inline-flex items-center gap-2"
+          >
+            <Download size={16} />
+            Download CV
+          </a>
         </motion.div>
 
         {/* Social links */}

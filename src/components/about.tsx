@@ -153,8 +153,8 @@ export default function About() {
               className="text-sm leading-relaxed mb-5"
               style={{ color: "#a1a1aa" }}
             >
-              Currently pursuing a{" "}
-              <span style={{ color: "#60a5fa" }}>B.E. in Computer Science</span> at AMC Engineering
+              Graduated with a{" "}
+              <span style={{ color: "#60a5fa" }}>B.E. in Computer Science</span> from AMC Engineering
               College, Bengaluru. Building with{" "}
               <span style={{ color: "#60a5fa" }}>Python, Django, FastAPI</span> on the backend and{" "}
               <span style={{ color: "#a78bfa" }}>React.js, TypeScript</span> on the frontend.
@@ -232,7 +232,7 @@ export default function About() {
                   </span>
                 </div>
                 <p className="text-xs" style={{ color: "#a1a1aa" }}>
-                  B.E. in Computer Science and Engineering
+                  B.E. in Computer Science and Engineering (Completed)
                 </p>
               </div>
               <div
