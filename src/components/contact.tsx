@@ -32,23 +32,42 @@ export default function Contact() {
     e.preventDefault();
     setStatus("sending");
 
-    const subject = encodeURIComponent(form.subject || "Portfolio Contact");
-    const attachNote = files.length > 0
-      ? `\n\n[${files.length} file(s) to share: ${files.map(f => f.name).join(", ")}]\nPlease reply to this email so I can send the attachments.`
-      : "";
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}${attachNote}`
-    );
-    window.open(
-      `https://mail.google.com/mail/?view=cm&to=tusharpatwadi2003@gmail.com&su=${subject}&body=${body}`,
-      "_blank"
-    );
+    try {
+      const formData = new FormData();
+      formData.append("name", form.name);
+      formData.append("email", form.email);
+      formData.append("_subject", form.subject || "New message from portfolio");
+      formData.append("message", form.message);
+      // Disable captcha page redirect
+      formData.append("_captcha", "false");
+      // Send confirmation to you
+      formData.append("_template", "table");
 
-    await new Promise((r) => setTimeout(r, 800));
-    setStatus("sent");
-    setForm({ name: "", email: "", subject: "", message: "" });
-    setFiles([]);
-    setTimeout(() => setStatus("idle"), 3000);
+      // Attach files
+      files.forEach((file) => {
+        formData.append("attachment", file);
+      });
+
+      const res = await fetch("https://formsubmit.co/ajax/tusharpatwadi2003@gmail.com", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+
+      if (data.success === "true" || data.success === true) {
+        setStatus("sent");
+        setForm({ name: "", email: "", subject: "", message: "" });
+        setFiles([]);
+        setTimeout(() => setStatus("idle"), 4000);
+      } else {
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 3000);
+      }
+    } catch {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 3000);
+    }
   };
 
   return (
