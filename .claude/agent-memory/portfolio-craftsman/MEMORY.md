@@ -1,0 +1,4 @@
+- [Portfolio Design System](project_design_system.md) — Color palette, fonts (#0a0a1a bg, cyan/violet/fuchsia accents, Inter + JetBrains Mono)
+- [Technical Constraints](project_technical_constraints.md) — lucide-react v1.7 missing Github/Twitter/Linkedin; Framer Motion ease cast; Tailwind 4 syntax
+- [Performance Patterns](project_performance_patterns.md) — RAF cursor, CSS-only particles, 350ms animations, no Three.js, card tilt via JS
+- [User Profile](user_profile.md) — V. Tushar, Full Stack & Web3 Dev, India, Solidity/React/ZK focus
