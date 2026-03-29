@@ -254,7 +254,7 @@ export default function Hero() {
           className="mb-4"
         >
           <h1
-            className="glitch-text gradient-text-full font-bold leading-[0.9] tracking-tight"
+            className="glitch-text gradient-text-hero font-bold leading-[0.9] tracking-tight"
             style={{ fontSize: "clamp(3.5rem,11vw,7.5rem)" }}
             data-text="V TUSHAR"
           >

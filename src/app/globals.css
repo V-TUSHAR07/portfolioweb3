@@ -251,10 +251,25 @@ body {
 }
 
 .gradient-text-full {
-  background: linear-gradient(135deg, #00ff88 0%, #00d4ff 50%, #ff0080 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #00ff88 35%, #00d4ff 65%, #ff0080 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.gradient-text-hero {
+  background: linear-gradient(135deg, #ffffff 0%, #e0ffe8 20%, #00ff88 50%, #00d4ff 80%, #ff0080 100%);
+  background-size: 200% 200%;
+  animation: hero-gradient-shift 6s ease-in-out infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.3)) drop-shadow(0 0 60px rgba(0, 212, 255, 0.15));
+}
+
+@keyframes hero-gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 /* ============================================
