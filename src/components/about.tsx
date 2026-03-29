@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { MapPin, ExternalLink, GraduationCap } from "lucide-react";
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
 
 const STATS = [
   {
@@ -212,19 +212,19 @@ export default function About() {
                 }}
               >
                 <div
-                  className="w-24 h-24 rounded-2xl overflow-hidden"
+                  className="w-28 h-28 rounded-2xl overflow-hidden"
                   style={{
-                    border: "2px solid rgba(255,255,255,0.12)",
-                    boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
+                    border: "2px solid rgba(255,255,255,0.15)",
+                    boxShadow: "0 8px 40px rgba(0,0,0,0.5), 0 0 20px rgba(59,130,246,0.15)",
                   }}
                 >
-                  <Image
+                  <img
                     src="/profile.jpg"
                     alt="V Tushar"
-                    width={96}
-                    height={96}
+                    width={112}
+                    height={112}
                     className="w-full h-full object-cover"
-                    priority
+                    loading="eager"
                   />
                 </div>
                 <div
