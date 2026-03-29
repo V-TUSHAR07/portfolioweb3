@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, Fira_Code } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space",
   subsets: ["latin"],
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains",
+const firaCode = Fira_Code({
+  variable: "--font-fira",
   subsets: ["latin"],
   display: "swap",
 });
@@ -54,7 +54,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${spaceGrotesk.variable} ${firaCode.variable}`}
       style={{ scrollBehavior: "smooth" }}
     >
       <body className="min-h-screen antialiased">{children}</body>

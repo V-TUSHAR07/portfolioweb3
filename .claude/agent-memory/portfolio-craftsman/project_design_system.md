@@ -17,9 +17,11 @@ Dark sci-fi cyberpunk Web3 portfolio for V. Tushar (Full Stack & Web3 Developer)
 - Borders: `rgba(0,255,136,0.08)` green-tinted
 - Card bg: `rgba(0,255,136,0.02)` green-tinted glass
 
-**Fonts:**
-- Body: Inter (variable `--font-inter`)
-- Mono / code: JetBrains Mono (variable `--font-jetbrains`)
+**Fonts (UPDATED):**
+- Body: Space Grotesk (variable `--font-space`) — replaced Inter
+- Mono / code: Fira Code (variable `--font-fira`) — replaced JetBrains Mono
+- CSS vars in `@theme inline`: `--font-sans: var(--font-space)` and `--font-mono: var(--font-fira)`
+- `.font-mono` utility also updated to use `var(--font-fira)`
 
 **Design Patterns:**
 - Glass cards: `glass` class (green-tinted rgba bg + backdrop-blur-16px)
@@ -38,6 +40,17 @@ Dark sci-fi cyberpunk Web3 portfolio for V. Tushar (Full Stack & Web3 Developer)
 - `scene3d.tsx` + `scene3d-inner.tsx` — @react-three/fiber 3D background (wireframe shapes + sparkles + stars, ssr:false)
 - `hud-overlay.tsx` — fixed sci-fi HUD with SYS.ONLINE, coordinates, block counter, clock
 - Terminal boot sequence in hero — staggered GSAP-style text reveal
+- `loading-screen.tsx` — fullscreen GSAP-driven boot sequence: glitch title, progress bar (green→cyan gradient), 6 staggered status messages, wipe-line + blur/scale exit; ~2.5s total; ssr:false via dynamic import
+- `page.tsx` now "use client" with `useState(loadingDone)` gating site visibility behind loading screen
+
+**Skills section (REDESIGNED — "PROTOCOL_MATRIX"):**
+- Section label: `// CORE_SYSTEMS`, title: "Protocol Matrix"
+- Card grid layout: 2/3/4 columns (mobile/sm/lg), one card per skill
+- Each card has SVG circular progress (r=24, circumference=~150.8, stroke-dasharray animated)
+- Card CSS: `.skill-card`, `.skill-card-ring`, `.skill-card-name`, `.skill-card-hover-glow`
+- Category color used for SVG stroke + CSS var `--card-color` / `--card-glow`
+- CounterNumber component: rAF eased count-up to total skills
+- Auxiliary modules + total counter below grid
 
 **Nav style:** Terminal command bar. Logo "TUSHAR.DEV_" with blinking underscore. Links styled as `> about` `> skills`.
 

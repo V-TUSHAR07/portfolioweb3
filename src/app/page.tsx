@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+import dynamic from "next/dynamic";
 import Cursor from "@/components/cursor";
 import Nav from "@/components/nav";
 import Hero from "@/components/hero";
@@ -9,21 +13,38 @@ import Contact from "@/components/contact";
 import Footer from "@/components/footer";
 import HudOverlay from "@/components/hud-overlay";
 
+const LoadingScreen = dynamic(() => import("@/components/loading-screen"), {
+  ssr: false,
+});
+
 export default function Home() {
+  const [loadingDone, setLoadingDone] = useState(false);
+
   return (
     <>
-      <Cursor />
-      <HudOverlay />
-      <Nav />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Contact />
-      </main>
-      <Footer />
+      {!loadingDone && (
+        <LoadingScreen onComplete={() => setLoadingDone(true)} />
+      )}
+      <div
+        style={{
+          opacity: loadingDone ? 1 : 0,
+          transition: "opacity 0.5s ease 0.1s",
+          visibility: loadingDone ? "visible" : "hidden",
+        }}
+      >
+        <Cursor />
+        <HudOverlay />
+        <Nav />
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Experience />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }
