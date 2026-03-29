@@ -228,7 +228,7 @@ export default function About() {
                       color: "#4ade80",
                     }}
                   >
-                    Ongoing
+                    2021 – 2025
                   </span>
                 </div>
                 <p className="text-xs" style={{ color: "#a1a1aa" }}>
@@ -242,9 +242,21 @@ export default function About() {
                   border: "1px solid rgba(139,92,246,0.1)",
                 }}
               >
-                <p className="text-sm font-semibold mb-1" style={{ color: "#fafafa" }}>
-                  Jnana Sweekar PU College
-                </p>
+                <div className="flex items-start justify-between gap-2 mb-1">
+                  <p className="text-sm font-semibold" style={{ color: "#fafafa" }}>
+                    Jnana Sweekar PU College
+                  </p>
+                  <span
+                    className="text-[10px] font-semibold px-2 py-0.5 rounded-full shrink-0"
+                    style={{
+                      background: "rgba(255,255,255,0.06)",
+                      border: "1px solid rgba(255,255,255,0.1)",
+                      color: "#a1a1aa",
+                    }}
+                  >
+                    2019 – 2021
+                  </span>
+                </div>
                 <p className="text-xs" style={{ color: "#a1a1aa" }}>PU in PCMCs</p>
               </div>
             </div>

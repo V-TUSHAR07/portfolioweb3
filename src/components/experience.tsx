@@ -139,7 +139,7 @@ export default function Experience() {
                 {
                   school: "AMC Engineering College",
                   degree: "B.E. in Computer Science and Engineering",
-                  period: "Ongoing",
+                  period: "2021 – 2025",
                   color: "#3b82f6",
                   bg: "rgba(59,130,246,0.06)",
                   border: "rgba(59,130,246,0.15)",
@@ -148,7 +148,7 @@ export default function Experience() {
                 {
                   school: "Jnana Sweekar PU College",
                   degree: "PU in PCMCs",
-                  period: "Completed",
+                  period: "2019 – 2021",
                   color: "#8b5cf6",
                   bg: "rgba(139,92,246,0.06)",
                   border: "rgba(139,92,246,0.15)",
