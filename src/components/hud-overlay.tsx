@@ -55,13 +55,13 @@ export default function HudOverlay() {
           className="font-mono text-[10px] tracking-wider"
           style={{ color: "#00d4ff", letterSpacing: "0.12em" }}
         >
-          LAT 28.6139 / LNG 77.2090
+          LAT 12.9716 / LNG 77.5946
         </div>
         <div
           className="font-mono text-[9px] mt-0.5"
           style={{ color: "#6b8f78" }}
         >
-          NEW DELHI, IND
+          BENGALURU, KA
         </div>
       </div>
 

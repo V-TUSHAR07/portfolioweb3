@@ -99,7 +99,7 @@ export default function Nav() {
               className="font-mono text-sm font-bold tracking-widest"
               style={{ color: "#00ff88", letterSpacing: "0.2em", textShadow: "0 0 12px rgba(0,255,136,0.4)" }}
             >
-              TUSHAR.DEV
+              V.TUSHAR
             </span>
             <span
               className="font-mono text-sm font-bold ml-0.5"

@@ -63,7 +63,7 @@ export default function Contact() {
             <span className="gradient-text-green">Touch</span>
           </motion.h2>
           <motion.p variants={itemVariants} className="text-sm mt-4 max-w-lg" style={{ color: "#6b8f78" }}>
-            Have a project in mind? Looking for a Web3 expert or full-stack developer?
+            Have a project in mind? Looking for a Django developer, Python dev, or Web3 builder?
             Initiate a connection below.
           </motion.p>
         </motion.div>
@@ -89,7 +89,7 @@ export default function Contact() {
             {/* Email */}
             <motion.a
               variants={itemVariants}
-              href="mailto:tusharpatwadi@gmail.com"
+              href="mailto:tusharpatwadi2003@gmail.com"
               className="flex items-center gap-4 rounded-sm p-4 glass-hover group block"
               style={{
                 background: "rgba(0,255,136,0.02)",
@@ -114,7 +114,7 @@ export default function Contact() {
                   onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#e0ffe8")}
                   onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#6b8f78")}
                 >
-                  tusharpatwadi@gmail.com
+                  tusharpatwadi2003@gmail.com
                 </div>
               </div>
               <ArrowRight
@@ -147,7 +147,7 @@ export default function Contact() {
                 <div className="font-mono text-[10px] mb-0.5 tracking-widest" style={{ color: "#3a5c48", letterSpacing: "0.2em" }}>
                   LOCATION
                 </div>
-                <div className="text-xs" style={{ color: "#6b8f78" }}>India</div>
+                <div className="text-xs" style={{ color: "#6b8f78" }}>Bengaluru, Karnataka</div>
               </div>
               <div className="ml-auto flex items-center gap-1.5">
                 <span className="pulse-dot-sm" />
@@ -170,8 +170,8 @@ export default function Contact() {
               <div className="space-y-3">
                 {[
                   { icon: GithubIcon, label: "GitHub", handle: "@V-TUSHAR07", href: "https://github.com/V-TUSHAR07", color: "#e0ffe8" },
-                  { icon: LinkedinIcon, label: "LinkedIn", handle: "V. Tushar", href: "https://linkedin.com", color: "#00d4ff" },
-                  { icon: TwitterIcon, label: "Twitter / X", handle: "@tushar", href: "https://twitter.com", color: "#00ff88" },
+                  { icon: LinkedinIcon, label: "LinkedIn", handle: "v-tushar-94839b267", href: "https://linkedin.com/in/v-tushar-94839b267", color: "#00d4ff" },
+                  { icon: TwitterIcon, label: "Twitter / X", handle: "@vtushar", href: "https://twitter.com", color: "#00ff88" },
                 ].map(({ icon: Icon, label, handle, href, color }) => (
                   <a
                     key={label}

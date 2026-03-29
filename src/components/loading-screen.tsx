@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 
 const STATUS_MESSAGES = [
-  "[SYS] Initializing neural interface...",
-  "[NET] Connecting to Ethereum mainnet...",
-  "[WEB3] Loading smart contract modules...",
-  "[AUTH] Verifying cryptographic signatures...",
+  "[SYS] Initializing V.Tushar protocol...",
+  "[NET] Connecting to Solana devnet...",
+  "[DJANGO] Loading backend modules...",
+  "[REACT] Compiling frontend components...",
   "[RENDER] Building holographic display...",
   "[DONE] All systems operational.",
 ];
@@ -119,14 +119,14 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
         {/* Glitch title */}
         <h1
           className="glitch-text loading-title"
-          data-text="TUSHAR"
-          aria-label="TUSHAR"
+          data-text="V TUSHAR"
+          aria-label="V TUSHAR"
         >
-          TUSHAR
+          V TUSHAR
         </h1>
 
         {/* Subtitle */}
-        <p className="loading-subtitle">// WEB3 PROTOCOL</p>
+        <p className="loading-subtitle">// DJANGO DEV | PYTHON | WEB3 BUILDER</p>
 
         {/* Progress bar */}
         <div ref={progressBarRef} className="loading-bar-track" aria-hidden="true">

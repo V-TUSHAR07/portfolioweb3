@@ -41,20 +41,20 @@ export default function Footer() {
               className="font-mono text-xs font-bold tracking-widest"
               style={{ color: "#00ff88", letterSpacing: "0.18em" }}
             >
-              TUSHAR.PROTOCOL
+              V.TUSHAR
             </span>
           </div>
 
           {/* Copyright */}
           <p className="font-mono text-[10px] text-center tracking-widest" style={{ color: "#3a5c48", letterSpacing: "0.18em" }}>
-            &copy; {year} TUSHAR.PROTOCOL // ALL_SYSTEMS_OPERATIONAL
+            &copy; {year} V.TUSHAR // ALL_SYSTEMS_OPERATIONAL
           </p>
 
           {/* Socials */}
           <div className="flex items-center gap-2.5">
             {[
               { href: "https://github.com/V-TUSHAR07", icon: GithubIcon, label: "GitHub" },
-              { href: "https://linkedin.com", icon: LinkedinIcon, label: "LinkedIn" },
+              { href: "https://linkedin.com/in/v-tushar-94839b267", icon: LinkedinIcon, label: "LinkedIn" },
               { href: "https://twitter.com", icon: TwitterIcon, label: "Twitter" },
             ].map(({ href, icon: Icon, label }) => (
               <a

@@ -15,33 +15,34 @@ const firaCode = Fira_Code({
 });
 
 export const metadata: Metadata = {
-  title: "TUSHAR // Web3 Developer",
+  title: "V TUSHAR // Django Developer | Python Dev | Web3 Builder",
   description:
-    "Smart contract engineer and full-stack architect. Building decentralized protocols, DeFi systems, and high-performance web applications on-chain.",
+    "Full-stack web developer building clean, impactful applications — from Django & React.js platforms to decentralized Web3 apps on Solana. B.E. CSE Student at AMC Engineering College, Bengaluru.",
   keywords: [
-    "Web3 Developer",
-    "Smart Contract Engineer",
-    "Solidity",
-    "DeFi Protocol Builder",
-    "Full Stack Architect",
-    "ZK Proofs",
-    "Blockchain",
-    "React",
-    "Next.js",
+    "Django Developer",
+    "Python Developer",
+    "Web3 Builder",
+    "Solana",
+    "React.js",
+    "FastAPI",
+    "Rust",
+    "Anchor Framework",
+    "Full Stack Developer",
+    "Bengaluru",
   ],
-  authors: [{ name: "Tushar", url: "https://github.com/V-TUSHAR07" }],
+  authors: [{ name: "V Tushar", url: "https://github.com/V-TUSHAR07" }],
   openGraph: {
-    title: "TUSHAR // Web3 Developer",
+    title: "V TUSHAR // Django Developer | Python Dev | Web3 Builder",
     description:
-      "Smart contract engineer. DeFi protocol builder. Full-stack architect. Building decentralized futures.",
+      "Full-stack web developer. Django & React.js platforms. Decentralized Web3 apps on Solana. Hackathon winner.",
     url: "https://portfolioweb3-oflh.vercel.app",
-    siteName: "TUSHAR.PROTOCOL",
+    siteName: "V.TUSHAR",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "TUSHAR // Web3 Developer",
-    description: "Smart contract engineer. DeFi protocol builder. Full-stack architect.",
+    title: "V TUSHAR // Django Developer | Python Dev | Web3 Builder",
+    description: "Full-stack web developer. Django, React.js, Solana, FastAPI. Hackathon winner.",
   },
   metadataBase: new URL("https://portfolioweb3-oflh.vercel.app"),
 };
