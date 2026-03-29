@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { MapPin, ExternalLink, GraduationCap } from "lucide-react";
+import Image from "next/image";
 
 const STATS = [
   {
@@ -211,15 +212,20 @@ export default function About() {
                 }}
               >
                 <div
-                  className="w-20 h-20 flex items-center justify-center text-2xl font-extrabold rounded-2xl"
+                  className="w-24 h-24 rounded-2xl overflow-hidden"
                   style={{
-                    background: "rgba(255,255,255,0.06)",
-                    border: "1px solid rgba(255,255,255,0.12)",
-                    color: "#fafafa",
-                    letterSpacing: "-0.02em",
+                    border: "2px solid rgba(255,255,255,0.12)",
+                    boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
                   }}
                 >
-                  VT
+                  <Image
+                    src="/profile.jpg"
+                    alt="V Tushar"
+                    width={96}
+                    height={96}
+                    className="w-full h-full object-cover"
+                    priority
+                  />
                 </div>
                 <div
                   className="absolute bottom-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full"
