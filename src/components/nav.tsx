@@ -5,11 +5,11 @@ import { clsx } from "clsx";
 import { Menu, X } from "lucide-react";
 
 const NAV_ITEMS = [
-  { label: "about", href: "#about" },
-  { label: "skills", href: "#skills" },
-  { label: "projects", href: "#projects" },
-  { label: "experience", href: "#experience" },
-  { label: "contact", href: "#contact" },
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Experience", href: "#experience" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Nav() {
@@ -17,13 +17,6 @@ export default function Nav() {
   const [active, setActive] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [blink, setBlink] = useState(true);
-
-  // Blinking underscore on logo
-  useEffect(() => {
-    const t = setInterval(() => setBlink((b) => !b), 600);
-    return () => clearInterval(t);
-  }, []);
 
   const handleScroll = useCallback(() => {
     const y = window.scrollY;
@@ -63,8 +56,7 @@ export default function Nav() {
         className="fixed top-0 left-0 h-[2px] z-[100] transition-all duration-100"
         style={{
           width: `${scrollProgress}%`,
-          background: "linear-gradient(90deg, #00ff88, #00d4ff, #ff0080)",
-          boxShadow: "0 0 8px rgba(0,255,136,0.6)",
+          background: "linear-gradient(90deg, #3b82f6, #8b5cf6)",
         }}
         aria-hidden="true"
       />
@@ -72,16 +64,13 @@ export default function Nav() {
       <nav
         className={clsx(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          scrolled
-            ? "backdrop-blur-xl"
-            : "bg-transparent"
+          scrolled ? "backdrop-blur-xl" : "bg-transparent"
         )}
         style={
           scrolled
             ? {
-                background: "rgba(3,1,8,0.88)",
-                borderBottom: "1px solid rgba(0,255,136,0.08)",
-                boxShadow: "0 0 24px rgba(0,255,136,0.04)",
+                background: "rgba(12, 12, 14, 0.9)",
+                borderBottom: "1px solid rgba(255,255,255,0.06)",
               }
             : undefined
         }
@@ -92,25 +81,19 @@ export default function Nav() {
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="flex items-center gap-0 group"
+            className="flex items-center gap-1.5 group"
             aria-label="Scroll to top"
           >
             <span
-              className="font-mono text-sm font-bold tracking-widest"
-              style={{ color: "#00ff88", letterSpacing: "0.2em", textShadow: "0 0 12px rgba(0,255,136,0.4)" }}
+              className="font-bold text-base tracking-tight"
+              style={{ color: "#fafafa" }}
             >
-              V.TUSHAR
+              V. Tushar
             </span>
             <span
-              className="font-mono text-sm font-bold ml-0.5"
-              style={{
-                color: "#00ff88",
-                opacity: blink ? 1 : 0,
-                transition: "opacity 0.1s",
-              }}
-            >
-              _
-            </span>
+              className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+              style={{ background: "#3b82f6" }}
+            />
           </button>
 
           {/* Desktop nav */}
@@ -127,22 +110,21 @@ export default function Nav() {
             ))}
             <button
               onClick={() => scrollTo("#contact")}
-              className="btn-primary font-mono font-bold px-4 py-2 text-xs tracking-widest"
-              style={{ borderRadius: "4px", letterSpacing: "0.15em" }}
+              className="btn-primary text-sm px-4 py-2"
             >
-              HIRE_ME
+              Hire Me
             </button>
           </div>
 
           {/* Mobile toggle */}
           <button
-            className="md:hidden p-2 transition-colors"
-            style={{ color: "#6b8f78" }}
+            className="md:hidden p-2 transition-colors rounded-lg"
+            style={{ color: "#a1a1aa" }}
             onClick={() => setMobileOpen((v) => !v)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
-            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#00ff88")}
-            onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#6b8f78")}
+            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#fafafa")}
+            onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#a1a1aa")}
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -153,31 +135,30 @@ export default function Nav() {
           <div
             className="md:hidden mobile-menu-enter backdrop-blur-xl px-6 py-5 flex flex-col gap-1"
             style={{
-              background: "rgba(3,1,8,0.98)",
-              borderBottom: "1px solid rgba(0,255,136,0.12)",
-              boxShadow: "0 8px 32px rgba(0,255,136,0.06)",
+              background: "rgba(12, 12, 14, 0.98)",
+              borderBottom: "1px solid rgba(255,255,255,0.06)",
             }}
           >
             {NAV_ITEMS.map((item) => (
               <button
                 key={item.href}
                 onClick={() => scrollTo(item.href)}
-                className="text-left px-3 py-3 font-mono text-sm transition-colors"
+                className="text-left px-3 py-3 rounded-lg text-sm transition-colors"
                 style={{
-                  color: active === item.href.slice(1) ? "#00ff88" : "#6b8f78",
-                  borderLeft: active === item.href.slice(1) ? "2px solid #00ff88" : "2px solid transparent",
-                  letterSpacing: "0.08em",
+                  color: active === item.href.slice(1) ? "#fafafa" : "#a1a1aa",
+                  background: active === item.href.slice(1)
+                    ? "rgba(59,130,246,0.08)"
+                    : "transparent",
                 }}
               >
-                {active === item.href.slice(1) ? `> ${item.label}` : `  ${item.label}`}
+                {item.label}
               </button>
             ))}
             <button
               onClick={() => scrollTo("#contact")}
-              className="btn-primary font-mono font-bold text-xs tracking-widest px-4 py-3 mt-3 text-center"
-              style={{ borderRadius: "4px", letterSpacing: "0.15em" }}
+              className="btn-primary text-sm mt-3 text-center"
             >
-              HIRE_ME
+              Hire Me
             </button>
           </div>
         )}

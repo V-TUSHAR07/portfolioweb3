@@ -1,59 +1,74 @@
 ---
 name: Portfolio Design System
-description: Sci-fi Web3 color palette, fonts, design tokens, and visual language used in Tushar's portfolio (post-overhaul)
+description: Professional blue/purple/amber palette, fonts, design tokens, and visual language for V. Tushar's portfolio
 type: project
 ---
 
-Dark sci-fi cyberpunk Web3 portfolio for V. Tushar (Full Stack & Web3 Developer).
+## Theme: Professional Web Developer & Blockchain Builder
+Linear.app meets Vercel meets a premium blockchain startup. Clean, modern, professional. NOT a hacker terminal.
 
-**Colors (POST SCI-FI OVERHAUL):**
-- Background: `#030108` (deep space black with purple nebula tint)
-- Primary accent (electric green): `#00ff88`
-- Secondary accent (hot cyan): `#00d4ff`
-- Tertiary accent (neon pink): `#ff0080`
-- Text primary: `#e0ffe8` (slight green tint to white)
-- Text secondary: `#6b8f78` (muted green)
-- Text muted: `#3a5c48` (dark muted green)
-- Borders: `rgba(0,255,136,0.08)` green-tinted
-- Card bg: `rgba(0,255,136,0.02)` green-tinted glass
+## Color Palette
+- Background: `#0c0c0e` (nearly black, no tint)
+- Surface/cards: `#141416`
+- Primary accent: `#3b82f6` (electric blue — trustworthy, professional)
+- Secondary accent: `#8b5cf6` (vibrant purple — blockchain/web3)
+- Tertiary: `#f59e0b` (warm amber — highlights/badges)
+- Text primary: `#fafafa`
+- Text secondary: `#a1a1aa` (zinc-400)
+- Text muted: `#52525b` (zinc-600)
+- Borders: `rgba(255,255,255,0.06)`
+- Border hover: `rgba(59,130,246,0.4)` (blue glow)
+- Success/online: `#22c55e` (standard green, NOT neon)
 
-**Fonts (UPDATED):**
-- Body: Space Grotesk (variable `--font-space`) — replaced Inter
-- Mono / code: Fira Code (variable `--font-fira`) — replaced JetBrains Mono
-- CSS vars in `@theme inline`: `--font-sans: var(--font-space)` and `--font-mono: var(--font-fira)`
-- `.font-mono` utility also updated to use `var(--font-fira)`
+## Typography
+- Body/headings: Space Grotesk (`--font-space`)
+- Code/mono: Fira Code (`--font-fira`)
+- Section eyebrows: `.section-eyebrow` — 0.75rem, 600 weight, 0.08em spacing, blue color, uppercase
+- Section titles: `.section-title` — clamp(2rem,5vw,3rem), 800 weight, -0.02em tracking
+- NO terminal prefixes (// ABOUT, // SKILLS, etc.)
+- NO UPPERCASE_SNAKE_CASE in UI text
 
-**Design Patterns:**
-- Glass cards: `glass` class (green-tinted rgba bg + backdrop-blur-16px)
-- Hover glass: `glass-hover` with green glow box-shadow
-- Gradient text: `.gradient-text-green` (green→cyan), `.gradient-text-pink` (pink→cyan), `.gradient-text-full` (green→cyan→pink)
-- Section labels: `// SECTION_NAME` format, font-mono, uppercase, green color
-- Scanline overlay: `.scanlines` class using CSS ::after with repeating-linear-gradient
-- Glitch text: `.glitch-text` with `data-text` attribute — CSS ::before/::after animation
-- Tag badges: `.tag` with `.tag-green/.tag-cyan/.tag-pink` modifiers
-- Buttons: `.btn-primary` (green→cyan gradient, dark text), `.btn-outline` (green border)
-- Pulsing dots: `.pulse-dot` (6px) and `.pulse-dot-sm` (5px) — animated green glow
-- Holographic border: `.holo-border` — cycling green→cyan→pink gradient border animation
-- Circuit bg: `.circuit-bg` — dual-scale grid pattern in green/cyan
+## CSS Class System
+- `.glass-card` — clean glass panel with blue hover glow
+- `.btn-primary` — filled blue button, hover lifts + glows
+- `.btn-outline` — transparent, subtle border, hover fills
+- `.btn-ghost` — text-only with hover background
+- `.nav-link` — underline-on-hover nav item, blue underline
+- `.skill-card` — circular SVG progress card, clean border
+- `.tag`, `.tag-blue`, `.tag-purple`, `.tag-amber`, `.tag-green` — clean badges
+- `.form-input` — subtle bg, blue focus ring
+- `.gradient-text` — blue→purple gradient text
+- `.status-dot` — green dot (#22c55e) for "available/online"
+- `.hero-orb` — blurred radial gradient orb background element
+- `.section-gradient-blue/purple/center` — radial bg for sections
+- `.timeline-line` — blue gradient vertical line for timeline
 
-**New Components:**
-- `scene3d.tsx` + `scene3d-inner.tsx` — @react-three/fiber 3D background (wireframe shapes + sparkles + stars, ssr:false)
-- `hud-overlay.tsx` — fixed sci-fi HUD with SYS.ONLINE, coordinates, block counter, clock
-- Terminal boot sequence in hero — staggered GSAP-style text reveal
-- `loading-screen.tsx` — fullscreen GSAP-driven boot sequence: glitch title, progress bar (green→cyan gradient), 6 staggered status messages, wipe-line + blur/scale exit; ~2.5s total; ssr:false via dynamic import
-- `page.tsx` now "use client" with `useState(loadingDone)` gating site visibility behind loading screen
+## Removed Permanently
+- NO green (#00ff88) anywhere
+- NO terminal UI (boot sequences, scanlines, circuit patterns)
+- NO custom cursor (cursor.tsx deleted)
+- NO HUD overlay (hud-overlay.tsx deleted)
+- NO loading screen (loading-screen.tsx deleted)
+- NO pulse-dot animations (replaced with static .status-dot)
+- NO glitch-text, gradient-text-hero, holo-border, scanlines, grid-bg
 
-**Skills section (REDESIGNED — "PROTOCOL_MATRIX"):**
-- Section label: `// CORE_SYSTEMS`, title: "Protocol Matrix"
-- Card grid layout: 2/3/4 columns (mobile/sm/lg), one card per skill
-- Each card has SVG circular progress (r=24, circumference=~150.8, stroke-dasharray animated)
-- Card CSS: `.skill-card`, `.skill-card-ring`, `.skill-card-name`, `.skill-card-hover-glow`
-- Category color used for SVG stroke + CSS var `--card-color` / `--card-glow`
-- CounterNumber component: rAF eased count-up to total skills
-- Auxiliary modules + total counter below grid
+## Component Patterns
+- Cards: 12px border-radius, rgba(255,255,255,0.03) bg, border rgba(255,255,255,0.06)
+- Hover: blue border glow, not green
+- Section structure: eyebrow label → large title → description → content
+- Stats cards: colored accent bg/border per category (blue/purple/amber)
+- Timeline: left line + colored dots, no pulse animation
+- Skills section title: "Tech Stack", eyebrow: "Skills"
+- Projects section title: "What I've Built", eyebrow: "Projects"
 
-**Nav style:** Terminal command bar. Logo "TUSHAR.DEV_" with blinking underscore. Links styled as `> about` `> skills`.
+## 3D Scene (scene3d-inner.tsx)
+- Blockchain nodes: blue (#3b82f6) and purple (#8b5cf6)
+- Ethereum diamond: purple (#8b5cf6)
+- Chain rings: blue/purple
+- Sparkles: blue + purple
+- Floating blocks: blue (#3b82f6)
+- Connection lines: blue opacity 0.07
 
-**Why:** User requested full sci-fi cyberpunk Web3 overhaul — Tron Legacy meets Blade Runner meets blockchain explorer.
+**Why:** Complete rebrand from sci-fi/hacker green terminal to professional portfolio. Previous green theme was described as "hacking the Pentagon" — needed to look like a Vercel-caliber developer.
 
-**How to apply:** Keep electric green as the dominant accent. Use cyan as secondary, pink sparingly for emphasis. All labels in terminal `//` or `>` format. Borders and glows use green palette throughout.
+**How to apply:** Always use blue/purple/amber palette. Never reintroduce green (#00ff88), terminal UI, custom cursor, or loading screen.

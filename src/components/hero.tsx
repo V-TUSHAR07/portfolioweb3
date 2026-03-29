@@ -8,24 +8,15 @@ import dynamic from "next/dynamic";
 
 const Scene3D = dynamic(() => import("./scene3d"), { ssr: false, loading: () => null });
 
-const TAGLINES = [
-  "DJANGO_DEVELOPER",
-  "PYTHON_ENGINEER",
-  "WEB3_BUILDER_ON_SOLANA",
-  "REACT.JS_DEVELOPER",
-  "FASTAPI_ARCHITECT",
-  "RUST_SMART_CONTRACTS",
+const ROLES = [
+  "Django Developer",
+  "React.js Engineer",
+  "Solana Builder",
+  "Python Developer",
+  "FastAPI Architect",
 ];
 
-const TERMINAL_LINES = [
-  "> initializing v.tushar.protocol...",
-  "> loading django & react modules...",
-  "> connecting to solana devnet...",
-  "> compiling rust smart contracts...",
-  "> system ready_",
-];
-
-function useTypingEffect(phrases: string[], charDelay = 55, pauseMs = 1600) {
+function useTypingEffect(phrases: string[], charDelay = 60, pauseMs = 1800) {
   const [text, setText] = useState("");
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -64,201 +55,90 @@ function useTypingEffect(phrases: string[], charDelay = 55, pauseMs = 1600) {
   return text;
 }
 
-function TerminalBoot() {
-  const [visibleLines, setVisibleLines] = useState<number[]>([]);
-  const [done, setDone] = useState(false);
-
-  useEffect(() => {
-    const timers: ReturnType<typeof setTimeout>[] = [];
-    TERMINAL_LINES.forEach((_, i) => {
-      timers.push(
-        setTimeout(() => {
-          setVisibleLines((prev) => [...prev, i]);
-          if (i === TERMINAL_LINES.length - 1) {
-            setTimeout(() => setDone(true), 400);
-          }
-        }, 600 + i * 380)
-      );
-    });
-    return () => timers.forEach(clearTimeout);
-  }, []);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: 0.1 }}
-      className="mb-8 max-w-md mx-auto"
-    >
-      <div
-        className="rounded-lg p-4 text-left"
-        style={{
-          background: "rgba(0,0,0,0.6)",
-          border: "1px solid rgba(0,255,136,0.15)",
-          boxShadow: "0 0 24px rgba(0,255,136,0.04), inset 0 0 24px rgba(0,0,0,0.4)",
-        }}
-      >
-        <div className="flex items-center gap-1.5 mb-3 pb-2" style={{ borderBottom: "1px solid rgba(0,255,136,0.08)" }}>
-          <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
-          <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
-          <span className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
-          <span className="ml-auto font-mono text-[10px]" style={{ color: "#3a5c48" }}>
-            tushar@solana-devnet:~
-          </span>
-        </div>
-        <div className="space-y-1">
-          {TERMINAL_LINES.map((line, i) => (
-            <div
-              key={i}
-              className="font-mono text-xs leading-relaxed transition-opacity duration-300"
-              style={{
-                color: i === TERMINAL_LINES.length - 1 ? "#00ff88" : "#6b8f78",
-                opacity: visibleLines.includes(i) ? 1 : 0,
-              }}
-            >
-              {line}
-              {i === TERMINAL_LINES.length - 1 && done && (
-                <span
-                  className="inline-block w-1.5 h-3.5 ml-0.5 align-middle"
-                  style={{
-                    background: "#00ff88",
-                    animation: "blink 1s step-end infinite",
-                    boxShadow: "0 0 4px #00ff88",
-                  }}
-                />
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-function ScifiParticles() {
-  const particles = [
-    { size: 2, top: "12%", left: "5%", duration: "9s", delay: "0s", color: "#00ff88" },
-    { size: 3, top: "22%", left: "92%", duration: "11s", delay: "1s", color: "#00d4ff" },
-    { size: 2, top: "38%", left: "8%", duration: "7s", delay: "2s", color: "#00ff88" },
-    { size: 3, top: "60%", left: "4%", duration: "13s", delay: "0.5s", color: "#ff0080" },
-    { size: 2, top: "80%", left: "10%", duration: "10s", delay: "3s", color: "#00ff88" },
-    { size: 3, top: "18%", left: "88%", duration: "8s", delay: "1.5s", color: "#00d4ff" },
-    { size: 2, top: "50%", left: "94%", duration: "12s", delay: "0s", color: "#00ff88" },
-    { size: 2, top: "72%", left: "96%", duration: "14s", delay: "1s", color: "#ff0080" },
-    { size: 3, top: "88%", left: "82%", duration: "8s", delay: "3s", color: "#00d4ff" },
-    { size: 2, top: "5%", left: "48%", duration: "11s", delay: "0.8s", color: "#00ff88" },
-    { size: 2, top: "92%", left: "42%", duration: "7s", delay: "2.5s", color: "#00d4ff" },
-    { size: 3, top: "45%", left: "52%", duration: "16s", delay: "1.2s", color: "#ff0080" },
-  ];
-
-  const shapes = [
-    { w: 40, h: 40, top: "16%", left: "6%", border: "rgba(0,255,136,0.18)", duration: "14s", delay: "0s" },
-    { w: 30, h: 30, top: "68%", left: "5%", border: "rgba(0,212,255,0.2)", duration: "11s", delay: "2s" },
-    { w: 50, h: 50, top: "25%", left: "90%", border: "rgba(255,0,128,0.15)", duration: "16s", delay: "1s" },
-    { w: 35, h: 35, top: "78%", left: "88%", border: "rgba(0,255,136,0.12)", duration: "12s", delay: "3s" },
-  ];
-
-  return (
-    <div className="particles-container" aria-hidden="true">
-      {particles.map((p, i) => (
-        <div
-          key={`p-${i}`}
-          className="particle"
-          style={{
-            width: p.size,
-            height: p.size,
-            top: p.top,
-            left: p.left,
-            background: p.color,
-            boxShadow: `0 0 ${p.size * 3}px ${p.color}`,
-            ["--duration" as string]: p.duration,
-            ["--delay" as string]: p.delay,
-            ["--opacity-start" as string]: "0.4",
-            ["--opacity-end" as string]: "0.8",
-          }}
-        />
-      ))}
-      {shapes.map((s, i) => (
-        <div
-          key={`s-${i}`}
-          className="geo-shape"
-          style={{
-            width: s.w,
-            height: s.h,
-            top: s.top,
-            left: s.left,
-            border: `1px solid ${s.border}`,
-            borderRadius: "0",
-            transform: "rotate(45deg)",
-            ["--duration" as string]: s.duration,
-            ["--delay" as string]: s.delay,
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
 export default function Hero() {
-  const typedText = useTypingEffect(TAGLINES, 55, 1600);
+  const typedText = useTypingEffect(ROLES, 60, 1800);
 
   return (
     <section
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
       aria-label="Hero section"
     >
-      <div className="absolute inset-0" style={{ background: "#030108" }} />
-      <div className="grid-bg" aria-hidden="true" />
+      {/* Base background */}
+      <div className="absolute inset-0" style={{ background: "#0c0c0e" }} />
+
+      {/* 3D scene */}
       <Scene3D />
 
+      {/* Gradient orbs */}
       <div
         className="hero-orb"
-        style={{ width: "500px", height: "500px", top: "5%", left: "-8%", background: "rgba(0,255,136,0.055)", animation: "orb-drift 20s ease-in-out infinite" }}
+        style={{
+          width: "600px",
+          height: "600px",
+          top: "-10%",
+          left: "-15%",
+          background: "rgba(59,130,246,0.07)",
+          animation: "orb-drift 22s ease-in-out infinite",
+        }}
         aria-hidden="true"
       />
       <div
         className="hero-orb"
-        style={{ width: "400px", height: "400px", top: "15%", right: "-6%", background: "rgba(0,212,255,0.045)", animation: "orb-drift 25s ease-in-out infinite reverse", animationDelay: "4s" }}
+        style={{
+          width: "500px",
+          height: "500px",
+          top: "10%",
+          right: "-12%",
+          background: "rgba(139,92,246,0.06)",
+          animation: "orb-drift 28s ease-in-out infinite reverse",
+          animationDelay: "5s",
+        }}
         aria-hidden="true"
       />
       <div
         className="hero-orb"
-        style={{ width: "300px", height: "300px", bottom: "10%", left: "35%", background: "rgba(255,0,128,0.035)", animation: "orb-drift 18s ease-in-out infinite", animationDelay: "9s" }}
+        style={{
+          width: "350px",
+          height: "350px",
+          bottom: "5%",
+          left: "30%",
+          background: "rgba(59,130,246,0.04)",
+          animation: "orb-drift 18s ease-in-out infinite",
+          animationDelay: "10s",
+        }}
         aria-hidden="true"
       />
-
-      <ScifiParticles />
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-        {/* Status badge */}
+        {/* Available badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex items-center gap-2.5 px-4 py-2 rounded-sm mb-8"
-          style={{ background: "rgba(0,255,136,0.04)", border: "1px solid rgba(0,255,136,0.2)", boxShadow: "0 0 16px rgba(0,255,136,0.06)" }}
+          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-10"
+          style={{
+            background: "rgba(34,197,94,0.08)",
+            border: "1px solid rgba(34,197,94,0.2)",
+          }}
         >
-          <span className="pulse-dot" />
-          <span className="font-mono text-xs tracking-widest" style={{ color: "#00ff88", letterSpacing: "0.18em" }}>
-            B.E. CSE STUDENT // AVAILABLE FOR WORK
+          <span className="status-dot" />
+          <span className="text-xs font-medium" style={{ color: "#4ade80" }}>
+            Available for opportunities
           </span>
         </motion.div>
 
-        <TerminalBoot />
-
-        {/* Name — GLITCH */}
+        {/* Name */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.5, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
           className="mb-4"
         >
           <h1
-            className="glitch-text gradient-text-hero font-bold leading-[0.9] tracking-tight"
-            style={{ fontSize: "clamp(3.5rem,11vw,7.5rem)" }}
-            data-text="V TUSHAR"
+            className="font-extrabold leading-[0.95] tracking-tight text-white"
+            style={{ fontSize: "clamp(3.5rem, 11vw, 7.5rem)" }}
           >
-            V TUSHAR
+            V Tushar
           </h1>
         </motion.div>
 
@@ -266,35 +146,38 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-          className="font-mono text-sm tracking-widest mb-3"
-          style={{ color: "#6b8f78", letterSpacing: "0.25em" }}
+          transition={{ duration: 0.4, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
+          className="text-base font-medium mb-4"
+          style={{ color: "#a1a1aa" }}
         >
-          DJANGO DEV // PYTHON // WEB3 BUILDER // STUDENT
+          Web Developer &amp; Blockchain Builder
         </motion.div>
 
-        {/* Typing tagline */}
+        {/* Typing effect */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.18 }}
-          className="h-9 flex items-center justify-center mb-8"
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className="h-10 flex items-center justify-center mb-8"
           aria-live="polite"
           aria-atomic="true"
         >
-          <span className="font-mono text-base" style={{ color: "#00d4ff", textShadow: "0 0 12px rgba(0,212,255,0.4)" }}>
+          <span
+            className="text-lg font-semibold gradient-text"
+            style={{ fontFamily: "var(--font-fira), monospace" }}
+          >
             {typedText}
             <span className="typing-cursor" aria-hidden="true" />
           </span>
         </motion.div>
 
-        {/* Bio snippet */}
+        {/* Bio */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
-          className="text-sm leading-relaxed max-w-lg mx-auto mb-10"
-          style={{ color: "#6b8f78" }}
+          transition={{ duration: 0.4, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
+          className="text-base leading-relaxed max-w-xl mx-auto mb-10"
+          style={{ color: "#a1a1aa" }}
         >
           Building clean, impactful applications — from Django &amp; React.js platforms
           to decentralized Web3 apps on Solana. Code that works, ships on time, and solves real problems.
@@ -304,22 +187,20 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.26, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-wrap items-center justify-center gap-4 mb-12"
+          transition={{ duration: 0.4, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-wrap items-center justify-center gap-4 mb-10"
         >
           <button
             onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-            className="btn-primary font-bold px-8 py-3 rounded-sm text-sm tracking-wider"
-            style={{ letterSpacing: "0.12em" }}
+            className="btn-primary px-7 py-3"
           >
-            VIEW_PROJECTS
+            View My Work
           </button>
           <button
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-            className="btn-outline font-mono px-8 py-3 rounded-sm text-sm tracking-wider"
-            style={{ letterSpacing: "0.12em" }}
+            className="btn-outline px-7 py-3"
           >
-            REACH_OUT
+            Get In Touch
           </button>
         </motion.div>
 
@@ -327,8 +208,8 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.3 }}
-          className="flex items-center justify-center gap-4 mb-14"
+          transition={{ duration: 0.4, delay: 0.32 }}
+          className="flex items-center justify-center gap-3 mb-14"
         >
           {[
             { href: "https://github.com/V-TUSHAR07", icon: GithubIcon, label: "GitHub" },
@@ -341,41 +222,45 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="w-10 h-10 flex items-center justify-center transition-all duration-200"
-              style={{ background: "rgba(0,255,136,0.04)", border: "1px solid rgba(0,255,136,0.15)", borderRadius: "4px", color: "#6b8f78" }}
+              className="w-10 h-10 flex items-center justify-center rounded-lg transition-all duration-200"
+              style={{
+                background: "rgba(255,255,255,0.04)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                color: "#a1a1aa",
+              }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.color = "#00ff88";
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,255,136,0.4)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 0 12px rgba(0,255,136,0.2)";
+                (e.currentTarget as HTMLElement).style.color = "#fafafa";
+                (e.currentTarget as HTMLElement).style.borderColor = "rgba(59,130,246,0.4)";
+                (e.currentTarget as HTMLElement).style.background = "rgba(59,130,246,0.08)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.color = "#6b8f78";
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,255,136,0.15)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "none";
+                (e.currentTarget as HTMLElement).style.color = "#a1a1aa";
+                (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.08)";
+                (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.04)";
               }}
             >
-              <Icon size={16} />
+              <Icon size={17} />
             </a>
           ))}
         </motion.div>
 
-        {/* Tech stack chips */}
+        {/* Tech stack pills */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.34 }}
+          transition={{ duration: 0.4, delay: 0.36 }}
           className="flex flex-wrap justify-center gap-2"
         >
           {[
-            { label: "Python", color: "green" },
-            { label: "Django", color: "cyan" },
-            { label: "React.js", color: "green" },
-            { label: "FastAPI", color: "pink" },
-            { label: "Solana", color: "cyan" },
-            { label: "Rust", color: "pink" },
-            { label: "TypeScript", color: "green" },
-          ].map(({ label, color }) => (
-            <span key={label} className={`tag tag-${color}`}>{label}</span>
+            { label: "Python", cls: "tag-blue" },
+            { label: "Django", cls: "tag-blue" },
+            { label: "React.js", cls: "tag-purple" },
+            { label: "FastAPI", cls: "tag-purple" },
+            { label: "Solana", cls: "tag-amber" },
+            { label: "Rust", cls: "tag-amber" },
+            { label: "TypeScript", cls: "tag-blue" },
+          ].map(({ label, cls }) => (
+            <span key={label} className={`tag ${cls}`}>{label}</span>
           ))}
         </motion.div>
       </div>
@@ -384,15 +269,15 @@ export default function Hero() {
       <motion.button
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.6, duration: 0.4 }}
+        transition={{ delay: 0.7, duration: 0.4 }}
         onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator flex flex-col items-center gap-1.5 transition-all duration-200"
-        style={{ color: "#3a5c48" }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator flex flex-col items-center gap-1.5"
+        style={{ color: "#52525b" }}
         aria-label="Scroll to about section"
-        onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#00ff88")}
-        onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#3a5c48")}
+        onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#a1a1aa")}
+        onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#52525b")}
       >
-        <span className="font-mono text-[10px] tracking-[0.3em]">SCROLL</span>
+        <span className="text-xs font-medium tracking-widest">Scroll</span>
         <ArrowDown size={14} />
       </motion.button>
     </section>

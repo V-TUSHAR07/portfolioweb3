@@ -1,23 +1,33 @@
 ---
 name: Portfolio Performance Patterns
-description: Approved animation and performance patterns for Tushar's portfolio
+description: Approved animation and performance patterns for Tushar's portfolio (post professional rebrand)
 type: project
 ---
 
-**Custom Cursor:** RAF-based with raw DOM `transform: translate3d()`. Dot is instant (direct position). Ring uses lerp factor 0.18 per frame. `will-change: transform` on both. Hidden on touch devices. Zero Framer Motion.
+**Custom Cursor:** REMOVED — standard browser cursor. cursor.tsx deleted in rebrand.
 
-**Particles:** Pure CSS `@keyframes float-particle` with CSS custom properties for per-particle randomization. Max 20 particles. Zero JS overhead.
-
-**Geometric shapes:** Pure CSS `@keyframes float-shape` for background decoration. No JS.
+**Background:** Gradient orbs via CSS `hero-orb` class with `orb-drift` keyframe animation + blur(80px). No JS particles. 3D scene handles the background depth.
 
 **Framer Motion config:**
 - `whileInView` with `once: true` and `margin: "-80px"` (sections), `"-60px"` (cards)
-- Entrance duration: 350-400ms
+- Entrance duration: 350-450ms
 - Stagger: 50-80ms between children
-- No 3D transforms (no perspective/rotateX in Framer Motion)
+- Ease: `[0.16, 1, 0.3, 1]` — must cast as `[number,number,number,number]` in TypeScript
 
-**Project card tilt:** Pure JS mouse move handler calculating rotateX/rotateY from cursor position relative to card center. Max ±4 degrees. CSS perspective(800px) on the card element.
+**Project card tilt:** Pure JS mouse move handler. Max ±3 degrees (reduced from ±4). CSS perspective(800px). Resets with 0.4s ease transition.
 
-**Why:** Previous build was laggy. User explicitly requested: RAF cursor, CSS-only particles, 300-400ms animations, no React Three Fiber.
+**3D Scene Performance:**
+- `dpr={[1, 1.5]}` — cap pixel ratio
+- `gl={{ antialias: false, alpha: true, powerPreference: "low-power" }}`
+- Loaded with `dynamic(() => import("./scene3d"), { ssr: false })`
 
-**How to apply:** Never add Framer Motion to the cursor. Never add JS-driven particle loops. Keep animation durations under 400ms.
+**Skill Cards:**
+- Circular SVG progress rings triggered by `useInView`
+- Staggered at `index * 60ms` delay
+- `transition: stroke-dashoffset 0.9s cubic-bezier(0.16,1,0.3,1)`
+
+**No Loading Screen:** Deleted in rebrand. Page renders immediately.
+
+**Why:** Previous cursor and loading screen added friction. Clean immediate render is more professional. Keep animations under 500ms.
+
+**How to apply:** Never re-add custom cursor or loading screen. Prefer CSS for static decorations, Framer Motion for scroll-triggered enters.

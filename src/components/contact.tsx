@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, ArrowRight, Send } from "lucide-react";
+import { Mail, MapPin, Send } from "lucide-react";
 import { GithubIcon, LinkedinIcon, TwitterIcon } from "./social-icons";
 
 const containerVariants = {
@@ -41,7 +41,8 @@ export default function Contact() {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse 70% 60% at 70% 50%, rgba(0,255,136,0.03), transparent)",
+          background:
+            "radial-gradient(ellipse 70% 60% at 70% 50%, rgba(139,92,246,0.05), transparent)",
         }}
         aria-hidden="true"
       />
@@ -55,16 +56,19 @@ export default function Contact() {
           variants={containerVariants}
           className="mb-16"
         >
-          <motion.p variants={itemVariants} className="section-label mb-3">
-            // ESTABLISH_CONNECTION
+          <motion.p variants={itemVariants} className="section-eyebrow mb-3">
+            Contact
           </motion.p>
           <motion.h2 variants={itemVariants} className="section-title">
-            <span style={{ color: "#e0ffe8" }}>Get In </span>
-            <span className="gradient-text-green">Touch</span>
+            Get In Touch
           </motion.h2>
-          <motion.p variants={itemVariants} className="text-sm mt-4 max-w-lg" style={{ color: "#6b8f78" }}>
+          <motion.p
+            variants={itemVariants}
+            className="text-sm mt-4 max-w-lg"
+            style={{ color: "#a1a1aa" }}
+          >
             Have a project in mind? Looking for a Django developer, Python dev, or Web3 builder?
-            Initiate a connection below.
+            Let&apos;s talk.
           </motion.p>
         </motion.div>
 
@@ -77,117 +81,132 @@ export default function Contact() {
             variants={containerVariants}
             className="space-y-4"
           >
-            {/* Label */}
-            <motion.p
-              variants={itemVariants}
-              className="font-mono text-[10px] tracking-widest mb-2"
-              style={{ color: "#3a5c48", letterSpacing: "0.25em" }}
-            >
-              // COMMS_CHANNEL
-            </motion.p>
-
             {/* Email */}
             <motion.a
               variants={itemVariants}
               href="mailto:tusharpatwadi2003@gmail.com"
-              className="flex items-center gap-4 rounded-sm p-4 glass-hover group block"
+              className="flex items-center gap-4 rounded-xl p-4 transition-all duration-200 block"
               style={{
-                background: "rgba(0,255,136,0.02)",
-                border: "1px solid rgba(0,255,136,0.1)",
+                background: "rgba(59,130,246,0.05)",
+                border: "1px solid rgba(59,130,246,0.12)",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.borderColor = "rgba(59,130,246,0.3)";
+                (e.currentTarget as HTMLElement).style.background = "rgba(59,130,246,0.08)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.borderColor = "rgba(59,130,246,0.12)";
+                (e.currentTarget as HTMLElement).style.background = "rgba(59,130,246,0.05)";
               }}
             >
               <div
-                className="w-9 h-9 flex items-center justify-center flex-shrink-0"
+                className="w-9 h-9 flex items-center justify-center flex-shrink-0 rounded-lg"
                 style={{
-                  background: "rgba(0,255,136,0.06)",
-                  border: "1px solid rgba(0,255,136,0.15)",
-                  borderRadius: "4px",
+                  background: "rgba(59,130,246,0.1)",
+                  border: "1px solid rgba(59,130,246,0.2)",
                 }}
               >
-                <Mail size={15} style={{ color: "#00ff88" }} />
+                <Mail size={15} style={{ color: "#60a5fa" }} />
               </div>
               <div>
-                <div className="font-mono text-[10px] mb-0.5 tracking-widest" style={{ color: "#3a5c48", letterSpacing: "0.2em" }}>
-                  EMAIL
+                <div className="text-xs font-semibold mb-0.5" style={{ color: "#52525b" }}>
+                  Email
                 </div>
-                <div className="text-xs transition-colors" style={{ color: "#6b8f78" }}
-                  onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#e0ffe8")}
-                  onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#6b8f78")}
-                >
+                <div className="text-sm" style={{ color: "#a1a1aa" }}>
                   tusharpatwadi2003@gmail.com
                 </div>
               </div>
-              <ArrowRight
-                size={13}
-                className="ml-auto"
-                style={{ color: "#3a5c48" }}
-              />
             </motion.a>
 
             {/* Location */}
             <motion.div
               variants={itemVariants}
-              className="flex items-center gap-4 rounded-sm p-4"
+              className="flex items-center gap-4 rounded-xl p-4"
               style={{
-                background: "rgba(0,212,255,0.02)",
-                border: "1px solid rgba(0,212,255,0.1)",
+                background: "rgba(139,92,246,0.05)",
+                border: "1px solid rgba(139,92,246,0.12)",
               }}
             >
               <div
-                className="w-9 h-9 flex items-center justify-center flex-shrink-0"
+                className="w-9 h-9 flex items-center justify-center flex-shrink-0 rounded-lg"
                 style={{
-                  background: "rgba(0,212,255,0.06)",
-                  border: "1px solid rgba(0,212,255,0.15)",
-                  borderRadius: "4px",
+                  background: "rgba(139,92,246,0.1)",
+                  border: "1px solid rgba(139,92,246,0.2)",
                 }}
               >
-                <MapPin size={15} style={{ color: "#00d4ff" }} />
+                <MapPin size={15} style={{ color: "#a78bfa" }} />
               </div>
-              <div>
-                <div className="font-mono text-[10px] mb-0.5 tracking-widest" style={{ color: "#3a5c48", letterSpacing: "0.2em" }}>
-                  LOCATION
+              <div className="flex-1">
+                <div className="text-xs font-semibold mb-0.5" style={{ color: "#52525b" }}>
+                  Location
                 </div>
-                <div className="text-xs" style={{ color: "#6b8f78" }}>Bengaluru, Karnataka</div>
+                <div className="text-sm" style={{ color: "#a1a1aa" }}>
+                  Bengaluru, Karnataka
+                </div>
               </div>
-              <div className="ml-auto flex items-center gap-1.5">
-                <span className="pulse-dot-sm" />
-                <span className="font-mono text-[10px]" style={{ color: "#00ff88" }}>REMOTE_OK</span>
+              <div className="flex items-center gap-1.5">
+                <span className="status-dot" />
+                <span className="text-xs font-medium" style={{ color: "#4ade80" }}>
+                  Remote OK
+                </span>
               </div>
             </motion.div>
 
-            {/* Social */}
+            {/* Social links */}
             <motion.div
               variants={itemVariants}
-              className="rounded-sm p-4"
+              className="rounded-xl p-4"
               style={{
-                background: "rgba(0,255,136,0.02)",
-                border: "1px solid rgba(0,255,136,0.08)",
+                background: "rgba(255,255,255,0.03)",
+                border: "1px solid rgba(255,255,255,0.06)",
               }}
             >
-              <div className="font-mono text-[10px] mb-4 tracking-widest" style={{ color: "#3a5c48", letterSpacing: "0.2em" }}>
-                // SOCIAL_NODES
+              <div className="text-xs font-semibold mb-4" style={{ color: "#52525b" }}>
+                Social
               </div>
               <div className="space-y-3">
                 {[
-                  { icon: GithubIcon, label: "GitHub", handle: "@V-TUSHAR07", href: "https://github.com/V-TUSHAR07", color: "#e0ffe8" },
-                  { icon: LinkedinIcon, label: "LinkedIn", handle: "v-tushar-94839b267", href: "https://linkedin.com/in/v-tushar-94839b267", color: "#00d4ff" },
-                  { icon: TwitterIcon, label: "Twitter / X", handle: "@vtushar", href: "https://twitter.com", color: "#00ff88" },
-                ].map(({ icon: Icon, label, handle, href, color }) => (
+                  {
+                    icon: GithubIcon,
+                    label: "GitHub",
+                    handle: "@V-TUSHAR07",
+                    href: "https://github.com/V-TUSHAR07",
+                  },
+                  {
+                    icon: LinkedinIcon,
+                    label: "LinkedIn",
+                    handle: "v-tushar-94839b267",
+                    href: "https://linkedin.com/in/v-tushar-94839b267",
+                  },
+                  {
+                    icon: TwitterIcon,
+                    label: "Twitter / X",
+                    handle: "@vtushar",
+                    href: "https://twitter.com",
+                  },
+                ].map(({ icon: Icon, label, handle, href }) => (
                   <a
                     key={label}
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 transition-colors group"
-                    style={{ color: "#6b8f78" }}
-                    onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#e0ffe8")}
-                    onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#6b8f78")}
+                    style={{ color: "#71717a" }}
+                    onMouseEnter={(e) =>
+                      ((e.currentTarget as HTMLElement).style.color = "#fafafa")
+                    }
+                    onMouseLeave={(e) =>
+                      ((e.currentTarget as HTMLElement).style.color = "#71717a")
+                    }
                   >
-                    <span style={{ color }} className="transition-transform group-hover:scale-110 inline-flex">
-                      <Icon size={14} />
+                    <Icon size={14} />
+                    <span className="text-sm">{label}</span>
+                    <span
+                      className="text-xs ml-auto"
+                      style={{ color: "#3f3f46" }}
+                    >
+                      {handle}
                     </span>
-                    <span className="text-xs">{label}</span>
-                    <span className="font-mono text-[10px] ml-auto" style={{ color: "#3a5c48" }}>{handle}</span>
                   </a>
                 ))}
               </div>
@@ -196,18 +215,19 @@ export default function Contact() {
             {/* Response time */}
             <motion.div
               variants={itemVariants}
-              className="rounded-sm p-4 text-center"
+              className="rounded-xl p-4 text-center"
               style={{
-                background: "rgba(0,255,136,0.02)",
-                border: "1px solid rgba(0,255,136,0.12)",
-                boxShadow: "0 0 20px rgba(0,255,136,0.04)",
+                background: "rgba(59,130,246,0.05)",
+                border: "1px solid rgba(59,130,246,0.12)",
               }}
             >
-              <div className="font-mono text-2xl font-bold" style={{ color: "#00ff88", textShadow: "0 0 16px rgba(0,255,136,0.4)" }}>
+              <div
+                className="text-2xl font-extrabold gradient-text"
+              >
                 &lt; 24h
               </div>
-              <div className="font-mono text-[10px] mt-1 tracking-widest" style={{ color: "#3a5c48", letterSpacing: "0.2em" }}>
-                AVG_RESPONSE_TIME
+              <div className="text-xs mt-1 font-medium" style={{ color: "#71717a" }}>
+                Average response time
               </div>
             </motion.div>
           </motion.div>
@@ -217,32 +237,29 @@ export default function Contact() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
           >
             <div
-              className="rounded-sm p-1"
+              className="rounded-xl p-1"
               style={{
-                background: "linear-gradient(135deg, rgba(0,255,136,0.1), rgba(0,212,255,0.08), rgba(255,0,128,0.08))",
+                background:
+                  "linear-gradient(135deg, rgba(59,130,246,0.15), rgba(139,92,246,0.1))",
               }}
             >
               <form
                 onSubmit={handleSubmit}
-                className="rounded-sm p-7 space-y-5"
-                style={{ background: "rgba(3,1,8,0.96)" }}
+                className="rounded-xl p-7 space-y-5"
+                style={{ background: "rgba(12,12,14,0.98)" }}
                 noValidate
               >
-                {/* Terminal decoration */}
-                <div className="flex items-center gap-2 pb-4" style={{ borderBottom: "1px solid rgba(0,255,136,0.08)" }}>
-                  <span className="pulse-dot-sm" />
-                  <span className="font-mono text-[10px] tracking-widest" style={{ color: "#3a5c48", letterSpacing: "0.2em" }}>
-                    // INIT_TRANSMISSION
-                  </span>
-                </div>
-
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="name" className="block font-mono text-[10px] mb-2 tracking-widest" style={{ color: "#3a5c48", letterSpacing: "0.18em" }}>
-                      SENDER_NAME
+                    <label
+                      htmlFor="name"
+                      className="block text-xs font-semibold mb-2"
+                      style={{ color: "#71717a" }}
+                    >
+                      Name
                     </label>
                     <input
                       id="name"
@@ -256,8 +273,12 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block font-mono text-[10px] mb-2 tracking-widest" style={{ color: "#3a5c48", letterSpacing: "0.18em" }}>
-                      EMAIL_ADDRESS
+                    <label
+                      htmlFor="email"
+                      className="block text-xs font-semibold mb-2"
+                      style={{ color: "#71717a" }}
+                    >
+                      Email
                     </label>
                     <input
                       id="email"
@@ -273,8 +294,12 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block font-mono text-[10px] mb-2 tracking-widest" style={{ color: "#3a5c48", letterSpacing: "0.18em" }}>
-                    SUBJECT
+                  <label
+                    htmlFor="subject"
+                    className="block text-xs font-semibold mb-2"
+                    style={{ color: "#71717a" }}
+                  >
+                    Subject
                   </label>
                   <input
                     id="subject"
@@ -288,8 +313,12 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block font-mono text-[10px] mb-2 tracking-widest" style={{ color: "#3a5c48", letterSpacing: "0.18em" }}>
-                    MESSAGE
+                  <label
+                    htmlFor="message"
+                    className="block text-xs font-semibold mb-2"
+                    style={{ color: "#71717a" }}
+                  >
+                    Message
                   </label>
                   <textarea
                     id="message"
@@ -306,13 +335,12 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={status === "sending" || status === "sent"}
-                  className="btn-primary w-full font-mono font-bold py-3.5 text-xs tracking-widest flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
-                  style={{ borderRadius: "4px", letterSpacing: "0.18em" }}
+                  className="btn-primary w-full py-3.5 gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {status === "idle" && (
                     <>
-                      <Send size={14} />
-                      TRANSMIT_MESSAGE
+                      <Send size={15} />
+                      Send Message
                     </>
                   )}
                   {status === "sending" && (
@@ -320,21 +348,24 @@ export default function Contact() {
                       <span
                         className="w-4 h-4 border-2 rounded-full inline-block"
                         style={{
-                          borderColor: "rgba(3,1,8,0.3)",
-                          borderTopColor: "#030108",
+                          borderColor: "rgba(255,255,255,0.3)",
+                          borderTopColor: "#ffffff",
                           animation: "spin 0.8s linear infinite",
                         }}
                       />
-                      TRANSMITTING...
+                      Sending...
                     </>
                   )}
-                  {status === "sent" && "TRANSMISSION_COMPLETE"}
-                  {status === "error" && "TRANSMISSION_FAILED — RETRY"}
+                  {status === "sent" && "Message sent!"}
+                  {status === "error" && "Failed to send — please try again"}
                 </button>
 
                 {status === "sent" && (
-                  <p className="text-center font-mono text-xs" style={{ color: "#00ff88", textShadow: "0 0 8px rgba(0,255,136,0.4)" }}>
-                    &gt; Message received. Responding within 24 hours._
+                  <p
+                    className="text-center text-sm font-medium"
+                    style={{ color: "#4ade80" }}
+                  >
+                    Message received. I will respond within 24 hours.
                   </p>
                 )}
               </form>
