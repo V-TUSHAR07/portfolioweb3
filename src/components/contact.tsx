@@ -33,29 +33,24 @@ export default function Contact() {
     setStatus("sending");
 
     try {
-      const formData = new FormData();
-      formData.append("name", form.name);
-      formData.append("email", form.email);
-      formData.append("_subject", form.subject || "New message from portfolio");
-      formData.append("message", form.message);
-      // Disable captcha page redirect
-      formData.append("_captcha", "false");
-      // Send confirmation to you
-      formData.append("_template", "table");
-
-      // Attach files
-      files.forEach((file) => {
-        formData.append("attachment", file);
-      });
-
-      const res = await fetch("https://formsubmit.co/ajax/tusharpatwadi2003@gmail.com", {
+      // Send via API route → Telegram + Email
+      const res = await fetch("/api/contact", {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          subject: form.subject,
+          message: form.message +
+            (files.length > 0
+              ? `\n\n[Attachments: ${files.map((f) => f.name).join(", ")}]`
+              : ""),
+        }),
       });
 
       const data = await res.json();
 
-      if (data.success === "true" || data.success === true) {
+      if (data.success) {
         setStatus("sent");
         setForm({ name: "", email: "", subject: "", message: "" });
         setFiles([]);
