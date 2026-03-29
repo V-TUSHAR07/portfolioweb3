@@ -1,13 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Briefcase, Calendar } from "lucide-react";
 
 const EXPERIENCE = [
   {
     role: "Freelance Web3 Developer",
     company: "Independent",
-    period: "2024 — Present",
+    period: "2024 → PRESENT",
     current: true,
     description:
       "Built DeFi protocols and NFT platforms for multiple clients worldwide. Deployed 20+ smart contracts to mainnet including yield vaults, DEX routers, and soulbound token contracts.",
@@ -17,14 +16,14 @@ const EXPERIENCE = [
       "Delivered 6 client projects with 100% on-time delivery",
       "Integrated ZK proofs for privacy-preserving verification",
     ],
-    color: "#06b6d4",
-    bg: "rgba(6,182,212,0.06)",
-    border: "rgba(6,182,212,0.15)",
+    color: "#00ff88",
+    bg: "rgba(0,255,136,0.02)",
+    border: "rgba(0,255,136,0.1)",
   },
   {
     role: "Blockchain Developer",
     company: "CryptoNova",
-    period: "2022 — 2024",
+    period: "2022 → 2024",
     current: false,
     description:
       "Led frontend development for a DEX aggregator processing $50M+ monthly volume. Integrated wallet connections, transaction signing, and gas optimization flows.",
@@ -34,14 +33,14 @@ const EXPERIENCE = [
       "Reduced transaction failure rate by 35% via gas optimization",
       "Led team of 3 frontend engineers",
     ],
-    color: "#8b5cf6",
-    bg: "rgba(139,92,246,0.06)",
-    border: "rgba(139,92,246,0.15)",
+    color: "#00d4ff",
+    bg: "rgba(0,212,255,0.02)",
+    border: "rgba(0,212,255,0.1)",
   },
   {
     role: "Frontend Engineer",
     company: "TechPulse",
-    period: "2020 — 2022",
+    period: "2020 → 2022",
     current: false,
     description:
       "Built component libraries and analytics dashboards serving 50K+ daily active users. Focused on performance optimization and developer experience.",
@@ -51,9 +50,9 @@ const EXPERIENCE = [
       "Improved Core Web Vitals scores to 95+ across all metrics",
       "Mentored 2 junior developers",
     ],
-    color: "#d946ef",
-    bg: "rgba(217,70,239,0.06)",
-    border: "rgba(217,70,239,0.15)",
+    color: "#ff0080",
+    bg: "rgba(255,0,128,0.02)",
+    border: "rgba(255,0,128,0.1)",
   },
 ];
 
@@ -74,12 +73,10 @@ const itemVariants = {
 export default function Experience() {
   return (
     <section id="experience" className="relative py-28 px-6" aria-label="Experience section">
-      {/* Background gradient */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background:
-            "radial-gradient(ellipse 60% 50% at 20% 50%, rgba(139,92,246,0.04), transparent)",
+          background: "radial-gradient(ellipse 60% 50% at 20% 50%, rgba(0,212,255,0.02), transparent)",
         }}
         aria-hidden="true"
       />
@@ -94,11 +91,11 @@ export default function Experience() {
           className="mb-16"
         >
           <motion.p variants={itemVariants} className="section-label mb-3">
-            04. Experience
+            // EXPERIENCE_LOG
           </motion.p>
-          <motion.h2 variants={itemVariants} className="section-title text-[#f1f5f9]">
-            My{" "}
-            <span className="gradient-text-violet">Journey</span>
+          <motion.h2 variants={itemVariants} className="section-title">
+            <span style={{ color: "#e0ffe8" }}>My </span>
+            <span className="gradient-text-green">Journey</span>
           </motion.h2>
         </motion.div>
 
@@ -108,8 +105,7 @@ export default function Experience() {
           <div
             className="absolute left-5 top-0 bottom-0 w-px"
             style={{
-              background:
-                "linear-gradient(to bottom, transparent, rgba(6,182,212,0.3) 10%, rgba(6,182,212,0.3) 90%, transparent)",
+              background: "linear-gradient(to bottom, transparent, rgba(0,255,136,0.25) 10%, rgba(0,255,136,0.25) 90%, transparent)",
             }}
             aria-hidden="true"
           />
@@ -128,60 +124,74 @@ export default function Experience() {
                   className="absolute left-[16px] top-6 w-[9px] h-[9px] rounded-full -translate-x-1/2"
                   style={{
                     background: exp.color,
-                    boxShadow: `0 0 12px ${exp.color}99`,
+                    boxShadow: `0 0 12px ${exp.color}99, 0 0 24px ${exp.color}44`,
+                    animation: exp.current ? "pulse-green 2s ease-in-out infinite" : undefined,
                   }}
                   aria-hidden="true"
                 />
 
                 {/* Card */}
                 <div
-                  className="glass rounded-2xl p-6 glass-hover"
-                  style={{ borderColor: exp.border, background: exp.bg }}
+                  className="rounded-sm p-6 glass-hover scanlines"
+                  style={{ background: exp.bg, border: `1px solid ${exp.border}` }}
                 >
                   <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
                     <div>
                       <div className="flex items-center gap-2 mb-1">
-                        <h3
-                          className="text-base font-bold text-[#f1f5f9]"
-                        >
+                        <h3 className="text-base font-bold" style={{ color: "#e0ffe8" }}>
                           {exp.role}
                         </h3>
                         {exp.current && (
                           <span
-                            className="text-[10px] font-mono px-2 py-0.5 rounded-full"
+                            className="font-mono text-[9px] px-2 py-0.5 tracking-widest"
                             style={{
-                              background: "rgba(16,185,129,0.1)",
-                              border: "1px solid rgba(16,185,129,0.25)",
-                              color: "#34d399",
+                              background: "rgba(0,255,136,0.08)",
+                              border: "1px solid rgba(0,255,136,0.2)",
+                              color: "#00ff88",
+                              borderRadius: "2px",
+                              letterSpacing: "0.18em",
                             }}
                           >
-                            Current
+                            ACTIVE
                           </span>
                         )}
                       </div>
                       <div className="flex items-center gap-2">
-                        <Briefcase size={12} style={{ color: exp.color }} />
-                        <span className="text-sm font-medium" style={{ color: exp.color }}>
+                        <div
+                          className="w-1.5 h-1.5 rounded-full"
+                          style={{ background: exp.color }}
+                          aria-hidden="true"
+                        />
+                        <span className="font-mono text-xs font-medium" style={{ color: exp.color }}>
                           {exp.company}
                         </span>
                       </div>
                     </div>
-                    <div className="flex items-center gap-1.5 text-xs text-[#475569] font-mono">
-                      <Calendar size={12} />
+                    {/* Period */}
+                    <div
+                      className="font-mono text-xs px-2.5 py-1"
+                      style={{
+                        color: exp.color,
+                        background: `${exp.color}08`,
+                        border: `1px solid ${exp.color}22`,
+                        borderRadius: "3px",
+                        letterSpacing: "0.1em",
+                      }}
+                    >
                       {exp.period}
                     </div>
                   </div>
 
-                  <p className="text-sm text-[#64748b] leading-relaxed mb-4">
+                  <p className="text-xs leading-relaxed mb-4" style={{ color: "#6b8f78" }}>
                     {exp.description}
                   </p>
 
                   <ul className="space-y-1.5">
                     {exp.highlights.map((h, j) => (
-                      <li key={j} className="flex items-start gap-2 text-sm text-[#94a3b8]">
+                      <li key={j} className="flex items-start gap-2 text-xs" style={{ color: "#94a3b8" }}>
                         <span
                           className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
-                          style={{ background: exp.color }}
+                          style={{ background: exp.color, boxShadow: `0 0 4px ${exp.color}` }}
                           aria-hidden="true"
                         />
                         {h}

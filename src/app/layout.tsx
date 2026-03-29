@@ -15,32 +15,33 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tushar — Full Stack & Web3 Developer",
+  title: "TUSHAR // Web3 Developer",
   description:
-    "I craft high-performance web applications and decentralized protocols. From Solidity smart contracts to React frontends, I build products that are fast, secure, and user-first.",
+    "Smart contract engineer and full-stack architect. Building decentralized protocols, DeFi systems, and high-performance web applications on-chain.",
   keywords: [
-    "Full Stack Developer",
     "Web3 Developer",
+    "Smart Contract Engineer",
     "Solidity",
+    "DeFi Protocol Builder",
+    "Full Stack Architect",
+    "ZK Proofs",
+    "Blockchain",
     "React",
     "Next.js",
-    "DeFi",
-    "Smart Contracts",
-    "Blockchain",
   ],
   authors: [{ name: "Tushar", url: "https://github.com/V-TUSHAR07" }],
   openGraph: {
-    title: "Tushar — Full Stack & Web3 Developer",
+    title: "TUSHAR // Web3 Developer",
     description:
-      "Building decentralized futures. Smart contracts, DeFi protocols, and full-stack web applications.",
+      "Smart contract engineer. DeFi protocol builder. Full-stack architect. Building decentralized futures.",
     url: "https://portfolioweb3-oflh.vercel.app",
-    siteName: "Tushar Portfolio",
+    siteName: "TUSHAR.PROTOCOL",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tushar — Full Stack & Web3 Developer",
-    description: "Building decentralized futures. Smart contracts, DeFi protocols, and full-stack web applications.",
+    title: "TUSHAR // Web3 Developer",
+    description: "Smart contract engineer. DeFi protocol builder. Full-stack architect.",
   },
   metadataBase: new URL("https://portfolioweb3-oflh.vercel.app"),
 };

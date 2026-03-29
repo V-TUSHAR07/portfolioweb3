@@ -4,10 +4,11 @@ import { motion } from "framer-motion";
 
 const SKILL_CATEGORIES = [
   {
-    title: "Web3 & Blockchain",
-    color: "#06b6d4",
-    bg: "rgba(6,182,212,0.06)",
-    border: "rgba(6,182,212,0.15)",
+    title: "WEB3 & BLOCKCHAIN",
+    label: "// web3",
+    color: "#00ff88",
+    bg: "rgba(0,255,136,0.03)",
+    border: "rgba(0,255,136,0.12)",
     skills: [
       { name: "Solidity", level: 90 },
       { name: "Ethers.js / Wagmi", level: 85 },
@@ -16,10 +17,11 @@ const SKILL_CATEGORIES = [
     ],
   },
   {
-    title: "Frontend",
-    color: "#8b5cf6",
-    bg: "rgba(139,92,246,0.06)",
-    border: "rgba(139,92,246,0.15)",
+    title: "FRONTEND",
+    label: "// frontend",
+    color: "#00d4ff",
+    bg: "rgba(0,212,255,0.03)",
+    border: "rgba(0,212,255,0.12)",
     skills: [
       { name: "React / Next.js", level: 95 },
       { name: "TypeScript", level: 92 },
@@ -28,10 +30,11 @@ const SKILL_CATEGORIES = [
     ],
   },
   {
-    title: "Backend",
-    color: "#d946ef",
-    bg: "rgba(217,70,239,0.06)",
-    border: "rgba(217,70,239,0.15)",
+    title: "BACKEND",
+    label: "// backend",
+    color: "#ff0080",
+    bg: "rgba(255,0,128,0.03)",
+    border: "rgba(255,0,128,0.12)",
     skills: [
       { name: "Node.js", level: 88 },
       { name: "PostgreSQL", level: 85 },
@@ -40,10 +43,11 @@ const SKILL_CATEGORIES = [
     ],
   },
   {
-    title: "Tools & DevOps",
-    color: "#10b981",
-    bg: "rgba(16,185,129,0.06)",
-    border: "rgba(16,185,129,0.15)",
+    title: "TOOLS & DEVOPS",
+    label: "// devops",
+    color: "#00ff88",
+    bg: "rgba(0,255,136,0.03)",
+    border: "rgba(0,255,136,0.12)",
     skills: [
       { name: "Git / CI/CD", level: 92 },
       { name: "Docker", level: 80 },
@@ -69,10 +73,15 @@ const itemVariants = {
 
 function SkillBar({ name, level, color }: { name: string; level: number; color: string }) {
   return (
-    <div className="space-y-1.5">
+    <div className="space-y-1.5 group">
       <div className="flex items-center justify-between">
-        <span className="text-sm text-[#94a3b8]">{name}</span>
-        <span className="text-xs font-mono" style={{ color }}>{level}%</span>
+        <span className="text-xs font-mono" style={{ color: "#6b8f78" }}>{name}</span>
+        <span
+          className="font-mono text-[11px] transition-all duration-200"
+          style={{ color }}
+        >
+          LEVEL_{level}
+        </span>
       </div>
       <div className="skill-bar-track">
         <motion.div
@@ -83,7 +92,7 @@ function SkillBar({ name, level, color }: { name: string; level: number; color: 
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           style={{
             width: `${level}%`,
-            background: `linear-gradient(90deg, ${color}, ${color}99)`,
+            background: `linear-gradient(90deg, ${color}, ${color}88)`,
           }}
         />
       </div>
@@ -94,12 +103,10 @@ function SkillBar({ name, level, color }: { name: string; level: number; color: 
 export default function Skills() {
   return (
     <section id="skills" className="relative py-28 px-6" aria-label="Skills section">
-      {/* Subtle section bg accent */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background:
-            "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(139,92,246,0.04), transparent)",
+          background: "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,212,255,0.025), transparent)",
         }}
         aria-hidden="true"
       />
@@ -114,13 +121,13 @@ export default function Skills() {
           className="mb-16"
         >
           <motion.p variants={itemVariants} className="section-label mb-3">
-            02. Skills
+            // SKILLS
           </motion.p>
-          <motion.h2 variants={itemVariants} className="section-title text-[#f1f5f9]">
-            Technical{" "}
-            <span className="gradient-text-violet">Arsenal</span>
+          <motion.h2 variants={itemVariants} className="section-title">
+            <span style={{ color: "#e0ffe8" }}>Technical </span>
+            <span className="gradient-text-green">Arsenal</span>
           </motion.h2>
-          <motion.p variants={itemVariants} className="text-[#64748b] mt-4 max-w-lg">
+          <motion.p variants={itemVariants} className="text-sm mt-4 max-w-lg" style={{ color: "#6b8f78" }}>
             A deep stack spanning Web3, full-stack development, and modern tooling.
           </motion.p>
         </motion.div>
@@ -131,26 +138,36 @@ export default function Skills() {
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
           variants={containerVariants}
-          className="grid md:grid-cols-2 gap-6"
+          className="grid md:grid-cols-2 gap-5"
         >
           {SKILL_CATEGORIES.map((cat) => (
             <motion.div
               key={cat.title}
               variants={itemVariants}
-              className="glass rounded-2xl p-6 glass-hover"
-              style={{ borderColor: cat.border, background: cat.bg }}
+              className="rounded-sm p-6 glass-hover circuit-bg relative overflow-hidden"
+              style={{
+                background: cat.bg,
+                border: `1px solid ${cat.border}`,
+              }}
             >
               {/* Category header */}
-              <div className="flex items-center gap-3 mb-6">
-                <div
-                  className="w-1 h-5 rounded-full"
-                  style={{ background: cat.color }}
-                />
-                <h3 className="font-semibold text-[#f1f5f9]">{cat.title}</h3>
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div
+                    className="w-0.5 h-5"
+                    style={{ background: cat.color, boxShadow: `0 0 8px ${cat.color}` }}
+                  />
+                  <h3 className="font-mono text-xs font-bold tracking-widest" style={{ color: cat.color, letterSpacing: "0.18em" }}>
+                    {cat.title}
+                  </h3>
+                </div>
+                <span className="font-mono text-[10px]" style={{ color: "#3a5c48" }}>
+                  {cat.label}
+                </span>
               </div>
 
               {/* Skill bars */}
-              <div className="space-y-4">
+              <div className="space-y-5">
                 {cat.skills.map((skill) => (
                   <SkillBar
                     key={skill.name}
@@ -172,22 +189,22 @@ export default function Skills() {
           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           className="mt-10"
         >
-          <p className="text-xs font-mono text-[#475569] uppercase tracking-widest mb-4">
-            Also familiar with
+          <p className="font-mono text-[10px] tracking-widest mb-4" style={{ color: "#3a5c48", letterSpacing: "0.25em" }}>
+            // ALSO_FAMILIAR_WITH
           </p>
           <div className="flex flex-wrap gap-2">
             {[
-              "IPFS", "OpenZeppelin", "Chainlink", "Uniswap SDK",
+              "IPFS", "OpenZeppelin", "Chainlink", "Uniswap_SDK",
               "Viem", "Zustand", "Prisma", "tRPC",
-              "Vercel", "GitHub Actions", "Linux", "Bash",
+              "Vercel", "GitHub_Actions", "Linux", "Bash",
             ].map((t) => (
               <span
                 key={t}
                 className="tag"
                 style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(255,255,255,0.07)",
-                  color: "#64748b",
+                  background: "rgba(0,255,136,0.03)",
+                  border: "1px solid rgba(0,255,136,0.1)",
+                  color: "#3a5c48",
                 }}
               >
                 {t}
