@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { MapPin, ExternalLink, GraduationCap } from "lucide-react";
+import { GithubIcon } from "./social-icons";
 /* eslint-disable @next/next/no-img-element */
 
 const STATS = [
@@ -50,6 +51,7 @@ export default function About() {
       />
 
       <div className="max-w-6xl mx-auto relative z-10">
+        {/* Section header */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -65,17 +67,72 @@ export default function About() {
           </motion.h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-[1fr_300px] gap-16 items-start">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={containerVariants}
-          >
-            {/* Bio */}
+        {/* ─── Top: Large profile image + intro side by side ─── */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={containerVariants}
+          className="grid md:grid-cols-[280px_1fr] gap-10 mb-14 items-center"
+        >
+          {/* Profile image — large, prominent */}
+          <motion.div variants={itemVariants} className="flex justify-center md:justify-start">
+            <div className="relative">
+              <div
+                className="w-56 h-56 sm:w-64 sm:h-64 rounded-3xl overflow-hidden relative"
+                style={{
+                  border: "2px solid rgba(255,255,255,0.08)",
+                  boxShadow:
+                    "0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(59,130,246,0.1)",
+                }}
+              >
+                <img
+                  src="/profile.jpg"
+                  alt="V Tushar"
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                />
+                {/* Subtle gradient overlay at bottom */}
+                <div
+                  className="absolute inset-x-0 bottom-0 h-20 pointer-events-none"
+                  style={{
+                    background: "linear-gradient(to top, rgba(12,12,14,0.6), transparent)",
+                  }}
+                />
+              </div>
+
+              {/* Status badge floating on image */}
+              <div
+                className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1.5 rounded-full"
+                style={{
+                  background: "rgba(12,12,14,0.85)",
+                  border: "1px solid rgba(34,197,94,0.25)",
+                  backdropFilter: "blur(8px)",
+                }}
+              >
+                <span className="status-dot" style={{ width: "6px", height: "6px" }} />
+                <span className="text-xs font-medium" style={{ color: "#4ade80" }}>
+                  Open to work
+                </span>
+              </div>
+
+              {/* Decorative gradient ring behind image */}
+              <div
+                className="absolute -inset-[3px] rounded-3xl pointer-events-none -z-10"
+                style={{
+                  background: "linear-gradient(135deg, #3b82f6, #8b5cf6, #3b82f6)",
+                  opacity: 0.15,
+                  filter: "blur(1px)",
+                }}
+              />
+            </div>
+          </motion.div>
+
+          {/* Intro text */}
+          <motion.div variants={containerVariants}>
             <motion.div
               variants={itemVariants}
-              className="mb-6 rounded-xl p-5"
+              className="mb-5 rounded-xl p-5"
               style={{
                 background: "rgba(59,130,246,0.04)",
                 border: "1px solid rgba(59,130,246,0.12)",
@@ -93,7 +150,7 @@ export default function About() {
 
             <motion.p
               variants={itemVariants}
-              className="text-sm leading-relaxed mb-6"
+              className="text-sm leading-relaxed mb-5"
               style={{ color: "#a1a1aa" }}
             >
               Currently pursuing a{" "}
@@ -105,205 +162,126 @@ export default function About() {
               <span style={{ color: "#fbbf24" }}>Rust &amp; Anchor on Solana</span>.
             </motion.p>
 
-            {/* Education */}
             <motion.div
               variants={itemVariants}
-              className="mb-8 rounded-xl p-4 space-y-3"
-              style={{
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.06)",
-              }}
+              className="flex flex-wrap items-center gap-3"
             >
-              <div className="flex items-center gap-2 mb-3">
-                <GraduationCap size={15} style={{ color: "#60a5fa" }} />
-                <span className="text-xs font-semibold" style={{ color: "#60a5fa" }}>
-                  Education
-                </span>
+              <div className="flex items-center gap-1.5 text-sm" style={{ color: "#a1a1aa" }}>
+                <MapPin size={13} style={{ color: "#3b82f6" }} />
+                <span>Bengaluru, Karnataka</span>
               </div>
-              <div className="flex items-start justify-between gap-2">
-                <div>
+              <a
+                href="https://github.com/V-TUSHAR07"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-medium transition-colors duration-200"
+                style={{ color: "#60a5fa" }}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#93bbfd")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#60a5fa")}
+              >
+                <GithubIcon size={13} />
+                V-TUSHAR07
+              </a>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+
+        {/* ─── Education ─── */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={containerVariants}
+          className="mb-12"
+        >
+          <motion.div
+            variants={itemVariants}
+            className="rounded-xl p-5"
+            style={{
+              background: "rgba(255,255,255,0.03)",
+              border: "1px solid rgba(255,255,255,0.06)",
+            }}
+          >
+            <div className="flex items-center gap-2 mb-4">
+              <GraduationCap size={15} style={{ color: "#60a5fa" }} />
+              <span className="text-xs font-semibold" style={{ color: "#60a5fa" }}>
+                Education
+              </span>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div
+                className="rounded-lg p-4"
+                style={{
+                  background: "rgba(59,130,246,0.04)",
+                  border: "1px solid rgba(59,130,246,0.1)",
+                }}
+              >
+                <div className="flex items-start justify-between gap-2 mb-1">
                   <p className="text-sm font-semibold" style={{ color: "#fafafa" }}>
                     AMC Engineering College
                   </p>
-                  <p className="text-xs mt-0.5" style={{ color: "#a1a1aa" }}>
-                    B.E. in Computer Science and Engineering
-                  </p>
+                  <span
+                    className="text-[10px] font-semibold px-2 py-0.5 rounded-full shrink-0"
+                    style={{
+                      background: "rgba(34,197,94,0.08)",
+                      border: "1px solid rgba(34,197,94,0.2)",
+                      color: "#4ade80",
+                    }}
+                  >
+                    Ongoing
+                  </span>
                 </div>
-                <span
-                  className="text-xs font-medium px-2 py-0.5 rounded-md shrink-0"
-                  style={{
-                    background: "rgba(34,197,94,0.08)",
-                    border: "1px solid rgba(34,197,94,0.2)",
-                    color: "#4ade80",
-                  }}
-                >
-                  Ongoing
-                </span>
-              </div>
-              <div className="pt-2" style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-                <p className="text-sm font-semibold" style={{ color: "#fafafa" }}>
-                  Jnana Sweekar PU College
+                <p className="text-xs" style={{ color: "#a1a1aa" }}>
+                  B.E. in Computer Science and Engineering
                 </p>
-                <p className="text-xs mt-0.5" style={{ color: "#a1a1aa" }}>PU in PCMCs</p>
               </div>
-            </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              className="flex items-center gap-2 text-sm mb-10"
-              style={{ color: "#a1a1aa" }}
-            >
-              <MapPin size={13} style={{ color: "#3b82f6" }} />
-              <span>Bengaluru, Karnataka</span>
-              <span className="mx-2" style={{ color: "#3f3f46" }}>&bull;</span>
-              <span className="status-dot" />
-              <span className="text-xs font-medium" style={{ color: "#4ade80" }}>
-                Open to work
-              </span>
-            </motion.div>
-
-            {/* Stats */}
-            <motion.div variants={containerVariants} className="grid sm:grid-cols-3 gap-4">
-              {STATS.map((s) => (
-                <motion.div
-                  key={s.label}
-                  variants={itemVariants}
-                  className="rounded-xl p-5 transition-all duration-200"
-                  style={{
-                    background: s.bg,
-                    border: `1px solid ${s.border}`,
-                  }}
-                  whileHover={{ y: -2 }}
-                >
-                  <div className="text-3xl font-extrabold mb-1" style={{ color: s.color }}>
-                    {s.value}
-                  </div>
-                  <div className="text-sm font-semibold mb-1" style={{ color: "#fafafa" }}>
-                    {s.label}
-                  </div>
-                  <div className="text-xs" style={{ color: "#71717a" }}>
-                    {s.sub}
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-
-          {/* Profile card */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-          >
-            <div
-              className="rounded-xl overflow-hidden"
-              style={{
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.06)",
-              }}
-            >
-              {/* Card header */}
               <div
-                className="relative h-48 flex items-center justify-center"
+                className="rounded-lg p-4"
                 style={{
-                  background:
-                    "linear-gradient(135deg, rgba(59,130,246,0.12) 0%, rgba(139,92,246,0.1) 50%, rgba(245,158,11,0.06) 100%)",
+                  background: "rgba(139,92,246,0.04)",
+                  border: "1px solid rgba(139,92,246,0.1)",
                 }}
               >
-                <div
-                  className="w-28 h-28 rounded-2xl overflow-hidden"
-                  style={{
-                    border: "2px solid rgba(255,255,255,0.15)",
-                    boxShadow: "0 8px 40px rgba(0,0,0,0.5), 0 0 20px rgba(59,130,246,0.15)",
-                  }}
-                >
-                  <img
-                    src="/profile.jpg"
-                    alt="V Tushar"
-                    width={112}
-                    height={112}
-                    className="w-full h-full object-cover"
-                    loading="eager"
-                  />
-                </div>
-                <div
-                  className="absolute bottom-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full"
-                  style={{
-                    background: "rgba(34,197,94,0.1)",
-                    border: "1px solid rgba(34,197,94,0.2)",
-                  }}
-                >
-                  <span className="status-dot" style={{ width: "5px", height: "5px" }} />
-                  <span className="text-xs" style={{ color: "#4ade80" }}>Available</span>
-                </div>
-              </div>
-
-              <div className="p-5">
-                <h3 className="font-bold text-base mb-0.5" style={{ color: "#fafafa" }}>
-                  V. Tushar
-                </h3>
-                <p className="text-xs mb-5" style={{ color: "#a1a1aa" }}>
-                  Django Dev · Python · Web3 Builder
+                <p className="text-sm font-semibold mb-1" style={{ color: "#fafafa" }}>
+                  Jnana Sweekar PU College
                 </p>
-
-                <div className="space-y-2.5 mb-5">
-                  {[
-                    { label: "Django / FastAPI", value: "Advanced" },
-                    { label: "React.js / Next.js", value: "Advanced" },
-                    { label: "Python", value: "Expert" },
-                    { label: "Solana / Rust", value: "Intermediate" },
-                  ].map((item) => (
-                    <div key={item.label} className="flex items-center justify-between">
-                      <span className="text-xs" style={{ color: "#71717a" }}>
-                        {item.label}
-                      </span>
-                      <span
-                        className="text-xs font-medium px-2 py-0.5 rounded-md"
-                        style={{
-                          background: "rgba(59,130,246,0.08)",
-                          border: "1px solid rgba(59,130,246,0.15)",
-                          color: "#60a5fa",
-                        }}
-                      >
-                        {item.value}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                <a
-                  href="https://github.com/V-TUSHAR07"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-sm font-medium transition-all duration-200"
-                  style={{
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    background: "rgba(255,255,255,0.03)",
-                    color: "#a1a1aa",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.color = "#fafafa";
-                    (e.currentTarget as HTMLElement).style.borderColor =
-                      "rgba(59,130,246,0.3)";
-                    (e.currentTarget as HTMLElement).style.background =
-                      "rgba(59,130,246,0.06)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.color = "#a1a1aa";
-                    (e.currentTarget as HTMLElement).style.borderColor =
-                      "rgba(255,255,255,0.08)";
-                    (e.currentTarget as HTMLElement).style.background =
-                      "rgba(255,255,255,0.03)";
-                  }}
-                >
-                  <ExternalLink size={13} />
-                  View GitHub Profile
-                </a>
+                <p className="text-xs" style={{ color: "#a1a1aa" }}>PU in PCMCs</p>
               </div>
             </div>
           </motion.div>
-        </div>
+        </motion.div>
+
+        {/* ─── Stats ─── */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={containerVariants}
+          className="grid sm:grid-cols-3 gap-4"
+        >
+          {STATS.map((s) => (
+            <motion.div
+              key={s.label}
+              variants={itemVariants}
+              className="rounded-xl p-6 transition-all duration-200"
+              style={{
+                background: s.bg,
+                border: `1px solid ${s.border}`,
+              }}
+              whileHover={{ y: -3, transition: { duration: 0.2 } }}
+            >
+              <div className="text-3xl font-extrabold mb-1.5" style={{ color: s.color }}>
+                {s.value}
+              </div>
+              <div className="text-sm font-semibold mb-1" style={{ color: "#fafafa" }}>
+                {s.label}
+              </div>
+              <div className="text-xs" style={{ color: "#71717a" }}>
+                {s.sub}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
