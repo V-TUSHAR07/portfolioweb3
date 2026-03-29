@@ -34,14 +34,14 @@ export default function Contact() {
 
     const subject = encodeURIComponent(form.subject || "Portfolio Contact");
     const attachNote = files.length > 0
-      ? `\n\n[${files.length} file(s) attached: ${files.map(f => f.name).join(", ")}]\n(Note: mailto links cannot attach files directly — please reply to this email to share attachments)`
+      ? `\n\n[${files.length} file(s) to share: ${files.map(f => f.name).join(", ")}]\nPlease reply to this email so I can send the attachments.`
       : "";
     const body = encodeURIComponent(
       `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}${attachNote}`
     );
     window.open(
-      `mailto:tusharpatwadi2003@gmail.com?subject=${subject}&body=${body}`,
-      "_self"
+      `https://mail.google.com/mail/?view=cm&to=tusharpatwadi2003@gmail.com&su=${subject}&body=${body}`,
+      "_blank"
     );
 
     await new Promise((r) => setTimeout(r, 800));
